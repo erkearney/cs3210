@@ -1,3 +1,4 @@
 Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
----------- DUE Monday, 10. September ----------
+------------------------- DUE Monday, September 10 -------------------------
 If you do anything make sure to add your name to the comment at the top of VPL.java
+To launch from terminal, use "java VPL someUnitTests 200"

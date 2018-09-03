@@ -171,9 +171,64 @@ public class VPL
 
       // put your work right here!
       switch(op) {
+        case noopCode: // 0
+            // Do nothing
+            break;
+        case labelCode: // 1
+            /* During program loading this instruction disappears, and all occurences of L
+            ** are replaced by the actualy index in mem wheree the opcode 1 would have
+            ** been stored. 
+            */
+            // TODO implement 1, label. 
+            System.out.println("1, label is not implemented yet.");
+            System.exit(1);
+            break;
+        case callCode: // 2
+            /* Do all thee steps necessary to set up for execution of the subprogram that
+            ** begins at L. 
+            */
+            // TODO implement 2, call.
+            System.out.println("2, call is not implemented yet.");
+            System.exit(1);
+            break;
+        case passCode: // 3
+            // Push the contents of cell a on the stack. 
+            // TODO implement 3, pass.
+            System.out.println("3, push is not implemented yet.");
+            System.exit(1);
+            break;
         case allocCode: // 4
             // Increase sp by n to make space for local variables in the current stack frame.
             sp += a;
+            break;
+        case returnCode: // 5
+            /* Do all the steps necessary to return from the current subprogram, including
+            ** putting the value stored in cell a in rv. 
+            */
+            // TODO implement 5, return, then get rid of the exit in 6, get retval.
+            System.out.println("5, return is not implemented yet.");
+            System.exit(1);
+            break;
+        case getRetvalCode: // 6
+            // Copy the value stored in rv into cell a.
+            // Get rid of the next two lines if you implement 5, return.
+            System.out.println("We can't use 6, get retval yet, because return isn't implemented.");
+            System.exit(1);
+            mem[a] = rv;
+            break;
+        case jumpCode: // 7
+            // Change ip to L.
+            // TODO implement 7, jump.
+            System.out.println("7, jump is not implemented yet.");
+            System.exit(1);
+            break;
+        case condJumpCode: // 8
+            /* If the value stored in cell a is non-zero, change ip to L, otherwise
+            ** move ip to the next instruction.
+            */
+            // TODO implement 8, cond.
+            System.out.println("8, cond is not implemented yet.");
+            System.exit(1);
             break;
         case addCode: // 9
             // Add the values in cell b and cell c and store the result in cell a.
@@ -183,6 +238,75 @@ public class VPL
             // Do cell b - cell c and store the result in cell a.
             mem[a] = mem[b] - mem[c];
             break;
+        case multCode: // 11
+            // Do cell b * cell c and store the result in call a.
+            mem[a] = mem[b] * mem[c];
+            break;
+        case divCode: // 12
+            // Do cell b / cell c and store the result in cell a.
+            mem[a] = mem[b] / mem[c];
+            break;
+        case remCode: // 13
+            // Do cell b % cell c and store the result in cell a.
+            mem[a] = mem[b] % mem[c];
+            break;
+        case equalCode: // 14
+            // Do cell b == cell c and store the result in cell a.
+            if (mem[b] == mem[c]) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;    
+            }
+            break;
+        case notEqualCode: // 15
+            // Do cell b != cell c and store the result in cell a.
+            if (mem[b] != mem[c]) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;    
+            }
+            break;
+        case lessCode: // 16
+            // Do cell b < cell c, and store the result in cell a.
+            if (mem[b] < mem[c]) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;    
+            }
+            break;
+        case lessEqualCode: // 17
+            // Do cell b <= cell c, and store the result in cell a.
+            if (mem[a] <= mem[c]) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0; 
+            }
+            break;
+        case andCode: // 18
+            // Do cell b && cell c and store the result in cell a.
+            // TODO I'm assuming any value > 0 is 'True', find out if this is correct, if it is not, fix 18, and and 19, or.
+            if (mem[b] > 0 && mem[c] > 0) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;    
+            }
+            break;
+        case orCode: // 19
+            // Do cell b || cell c and store the result in cell a.
+            if (mem[b] > 0 || mem[c] > 0) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;    
+            }
+            break;
+        case notCode: // 20
+            // If cell b == 0, put 1 in cell a, otherwise, put 0 in cell a.
+            if (mem[b] == 0) {
+                mem[a] = 1;    
+            } else {
+                mem[a] = 0;
+            }
+            break;
         case oppCode: // 21
             // Put the opposite of the contents of cell b in cell a.
             mem[ bp+2 + a ] = - mem[ bp+2 + b]; 
@@ -191,6 +315,29 @@ public class VPL
             // Put n in cell a.
             mem[a] = b;
             break;
+        case copyCode: // 23
+            // Copy the value in cell b into cell a.
+            mem[a] = mem[b];
+            break;
+        case getCode: // 24
+            /* Get the value stored in the heap at the index obtained by adding the value of
+            ** cell b and the value of cell c and copy it into cell a.
+            */
+            // TODO implement 24, get
+            System.out.println("24, get is not implemented yet.");
+            System.exit(1);
+            break;
+        case putCode: // 25
+            /* Take the value from cell c and store it in the heap at the location with index
+            ** computed as the value in cell a plus the value in cell b.
+            */
+            // TODO implement 25, put
+            System.out.println("25, put is not implemented yet.");
+            System.exit(1);
+            break;
+        case haltCode: // 26
+            // Halt execution.
+            System.exit(0);
         case inputCode: // 27
             // Print a ? and a space in the console and wait for an integer value to be typed 
             // by the user, and then store it in cell a.
@@ -198,11 +345,12 @@ public class VPL
             System.out.print("? ");
             try {
                 mem[a] = userIn.nextInt();
-                // TODO When the user hits ENTER, it will create a new line, even though a new line
-                // command was never passed, find out if this is a problem.
+                /* TODO When the user hits ENTER, it will create a new line, even though a new line
+                ** command was never passed, find out if this is a problem.
+                */
                 userIn.close();
-            } catch ( java.util.InputMismatchException e1 ) {
-               System.out.print("Fatal error: You must input an integer");
+            } catch (java.util.InputMismatchException e1) {
+               System.out.print("You must input an integer");
                System.exit(1);
             }
             break;
@@ -213,6 +361,43 @@ public class VPL
         case newlineCode: // 29
             // Move the console cursor to the beginning of the next line
             System.out.println();
+            break;
+        case symbolCode: // 30
+            /* If the value stored in cell a is between 32 and 126, display the corresponding symbol
+            ** at the console cursor, otherwise do nothing.
+            */
+            // TODO implement 30, symbol
+            System.out.println("30, symbol is not implemented yet.");
+            System.exit(1);
+            break;
+        case newCode: // 31
+            /* Let the value stored in cell b be denoted by m. Decrease hp by m and put the new value
+            ** of hp in cell a
+            */
+            // TODO implement 31, new
+            System.out.println("31, new is not implemented yet.");
+            System.exit(1);
+            break;
+        case allocGlobalCode: // 32
+            /* This instruction must occur first in any program that uses it. It simply sets the initial
+            ** value of sp to n cells beyond the end of stored program memory, and sets gp to the end of
+            ** stored program memory.
+            */
+            // TODO implement 32, allocate global space
+            System.out.println("32, allocate global space is not implemented yet.");
+            System.exit(1);
+            break;
+        case toGlobalCode: // 33
+            // Copy the contents of cell a to the global memory area at index gp+n.
+            // TODO implement 33, Copy to global
+            System.out.println("33, Copy to global is not implemented yet.");
+            System.exit(1);
+            break;
+        case fromGlobalCode: // 34
+            // Copy the contents of the global memory cell at index gp+n into cell a.
+            // TODO implement 34, Copy from global
+            System.out.println("34, Copy from global is not implementeed yet.");
+            System.exit(1);
             break;
         default: 
             System.out.println( "Fatal error: unknown opcode [" + op + "]" );

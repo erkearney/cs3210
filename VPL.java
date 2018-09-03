@@ -1,4 +1,5 @@
 // Original code written by Dr. Jerry Shultz
+// Additions made by Eric Kearney
 import java.io.*;
 import java.util.*;
 
@@ -93,7 +94,7 @@ public class VPL
     int index;
     for( int m=0; m<holes.size(); ++m )
     {
-      label = holes.get(m).second;
+      label = holes.get(m).second; // iterate on every second element
       index = -1;
       for( int n=0; n<labels.size(); ++n )
         if( labels.get(n).first == label )
@@ -169,7 +170,56 @@ public class VPL
       // ********************************************
 
       // put your work right here!
+      switch(op) {
+        case allocCode: // 4
+            // Increase sp by n to make space for local variables in the current stack frame.
+            sp += a;
+            break;
+        case addCode: // 9
+            // Add the values in cell b and cell c and store the result in cell a.
+            mem[a] = mem[b] + mem[c];
+            break;
+        case subCode: // 10
+            // Do cell b - cell c and store the result in cell a.
+            mem[a] = mem[b] - mem[c];
+            break;
+        case oppCode: // 21
+            // Put the opposite of the contents of cell b in cell a.
+            mem[ bp+2 + a ] = - mem[ bp+2 + b]; 
+            break;
+        case litCode: // 22
+            // Put n in cell a.
+            mem[a] = b;
+            break;
+        case inputCode: // 27
+            // Print a ? and a space in the console and wait for an integer value to be typed 
+            // by the user, and then store it in cell a.
+            Scanner userIn = new Scanner(System.in);
+            System.out.print("? ");
+            try {
+                mem[a] = userIn.nextInt();
+                // TODO When the user hits ENTER, it will create a new line, even though a new line
+                // command was never passed, find out if this is a problem.
+                userIn.close();
+            } catch ( java.util.InputMismatchException e1 ) {
+               System.out.print("Fatal error: You must input an integer");
+               System.exit(1);
+            }
+            break;
+        case outputCode: // 28
+            // Display the value stored in call a in the console
+            System.out.println(mem[a]);
+            break;
+        case newlineCode: // 29
+            // Move the console cursor to the beginning of the next line
+            System.out.println();
+            break;
+        default: 
+            System.out.println( "Fatal error: unknown opcode [" + op + "]" );
+            System.exit(1);
+      }
 
+      /*
       if ( op == oppCode ) {
          mem[ bp+2 + a ] = - mem[ bp+2 + b ];
       }
@@ -180,6 +230,7 @@ public class VPL
         System.out.println("Fatal error: unknown opcode [" + op + "]" );
         System.exit(1);
       }
+      */
        
       step++;
 

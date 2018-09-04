@@ -176,7 +176,7 @@ public class VPL
             break;
         case labelCode: // 1
             /* During program loading this instruction disappears, and all occurences of L
-            ** are replaced by the actualy index in mem wheree the opcode 1 would have
+            ** are replaced by the actualy index in mem where the opcode 1 would have
             ** been stored. 
             */
             // TODO implement 1, label. 

@@ -21,7 +21,7 @@ public class VPL
       System.out.println("Usage: java VPL <vpl program> <memory size>" );
       System.exit(1);
     }
-   // My name is Hamza
+   // My name Justin
     fileName = args[0];
 
     max = Integer.parseInt( args[1] );

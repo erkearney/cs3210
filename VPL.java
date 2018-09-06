@@ -2,6 +2,8 @@
 // Additions made by Eric Kearney
 import java.io.*;
 import java.util.*;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class VPL
 {
@@ -13,6 +15,8 @@ public class VPL
   static int ip, bp, sp, rv, hp, numPassed, gp;
   static int step;
 
+
+
   public static void main(String[] args) throws Exception {
 
     keys = new Scanner( System.in );
@@ -21,7 +25,6 @@ public class VPL
       System.out.println("Usage: java VPL <vpl program> <memory size>" );
       System.exit(1);
     }
-
     fileName = args[0];
 
     max = Integer.parseInt( args[1] );
@@ -86,6 +89,10 @@ public class VPL
         }// have a token, so must be an instruction
       }// have a line
     }// loop to load code
+
+    Map<Integer, Integer> labelLocations = new HashMap<>();
+
+    labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
     
     //System.out.println("after first scan:");
     //showMem( 0, k-1 );
@@ -179,23 +186,26 @@ public class VPL
             ** are replaced by the actualy index in mem where the opcode 1 would have
             ** been stored. 
             */
-            // TODO implement 1, label. 
-            System.out.println("1, label is not implemented yet.");
+            System.out.println("1, This code should never be reached - error.");
             System.exit(1);
             break;
         case callCode: // 2
             /* Do all thee steps necessary to set up for execution of the subprogram that
             ** begins at L. 
             */
-            // TODO implement 2, call.
-            System.out.println("2, call is not implemented yet.");
+            if (labelLocations.containsKey(a))
+            {
+                ip = labelLocations.get(a);
+                bp = sp;
+                sp += 2;
+                break;
+            }
+            System.out.println("2, no label found");
             System.exit(1);
             break;
         case passCode: // 3
             // Push the contents of cell a on the stack. 
-            // TODO implement 3, pass.
-            System.out.println("3, push is not implemented yet.");
-            System.exit(1);
+            mem[sp +2] = mem[bp + 2 + a];
             break;
         case allocCode: // 4
             // Increase sp by n to make space for local variables in the current stack frame.
@@ -205,30 +215,36 @@ public class VPL
             /* Do all the steps necessary to return from the current subprogram, including
             ** putting the value stored in cell a in rv. 
             */
-            // TODO implement 5, return, then get rid of the exit in 6, get retval.
-            System.out.println("5, return is not implemented yet.");
-            System.exit(1);
+            rv = mem[bp +2 + a];
+            sp = bp;
+            ip = mem[bp];
+            bp = mem[bp +1];
             break;
         case getRetvalCode: // 6
             // Copy the value stored in rv into cell a.
-            // Get rid of the next two lines if you implement 5, return.
-            System.out.println("We can't use 6, get retval yet, because return isn't implemented.");
-            System.exit(1);
             mem[a] = rv;
             break;
         case jumpCode: // 7
             // Change ip to L.
-            // TODO implement 7, jump.
-            System.out.println("7, jump is not implemented yet.");
-            System.exit(1);
+            if (labelLocations.containsKey(a))
+            {
+                ip = labelLocations.get(a);
+            }
             break;
         case condJumpCode: // 8
             /* If the value stored in cell a is non-zero, change ip to L, otherwise
             ** move ip to the next instruction.
             */
-            // TODO implement 8, cond.
-            System.out.println("8, cond is not implemented yet.");
-            System.exit(1);
+            if(mem[bp + 2 + b] != 0)
+            {
+                if (labelLocations.containsKey(a))
+                {
+                    ip = labelLocations.get(a);
+                }
+            }
+            else {
+                ip += 3;
+            }
             break;
         case addCode: // 9
             // Add the values in cell b and cell c and store the result in cell a.
@@ -284,7 +300,6 @@ public class VPL
             break;
         case andCode: // 18
             // Do cell b && cell c and store the result in cell a.
-            // TODO I'm assuming any value > 0 is 'True', find out if this is correct, if it is not, fix 18, and and 19, or.
             if (mem[b] > 0 && mem[c] > 0) {
                 mem[a] = 1;    
             } else {
@@ -309,6 +324,7 @@ public class VPL
             break;
         case oppCode: // 21
             // Put the opposite of the contents of cell b in cell a.
+            // TODO this might not be right...could possibly be turn a 1 into a 0 (true to false) or vice versa
             mem[ bp+2 + a ] = - mem[ bp+2 + b]; 
             break;
         case litCode: // 22
@@ -323,17 +339,14 @@ public class VPL
             /* Get the value stored in the heap at the index obtained by adding the value of
             ** cell b and the value of cell c and copy it into cell a.
             */
-            // TODO implement 24, get
-            System.out.println("24, get is not implemented yet.");
-            System.exit(1);
+            mem[bp + 2 + a] = mem[hp + b] + mem[hp + c];
             break;
         case putCode: // 25
             /* Take the value from cell c and store it in the heap at the location with index
             ** computed as the value in cell a plus the value in cell b.
             */
-            // TODO implement 25, put
-            System.out.println("25, put is not implemented yet.");
-            System.exit(1);
+            int memVal = mem[bp + 2 + a] + mem[bp + 2 + b];
+            mem[hp + memVal] = mem[bp + 2 + c];
             break;
         case haltCode: // 26
             // Halt execution.
@@ -366,38 +379,37 @@ public class VPL
             /* If the value stored in cell a is between 32 and 126, display the corresponding symbol
             ** at the console cursor, otherwise do nothing.
             */
-            // TODO implement 30, symbol
-            System.out.println("30, symbol is not implemented yet.");
-            System.exit(1);
+            int val = mem[bp + 2 + a];
+            if (val >= 32 && val <= 126)
+            {
+                System.out.print((char) val);
+            }
+            else {
+                System.out.println("30, entry: " + val + " is not a valid ascii character.");
+            }
             break;
         case newCode: // 31
             /* Let the value stored in cell b be denoted by m. Decrease hp by m and put the new value
             ** of hp in cell a
             */
-            // TODO implement 31, new
-            System.out.println("31, new is not implemented yet.");
-            System.exit(1);
+            hp = mem[hp - b];
+            mem[bp + 2 + a] = hp;
             break;
         case allocGlobalCode: // 32
             /* This instruction must occur first in any program that uses it. It simply sets the initial
             ** value of sp to n cells beyond the end of stored program memory, and sets gp to the end of
             ** stored program memory.
             */
-            // TODO implement 32, allocate global space
-            System.out.println("32, allocate global space is not implemented yet.");
-            System.exit(1);
+            sp = mem[bp + 2 + a];
+            gp = bp + 2;
             break;
         case toGlobalCode: // 33
             // Copy the contents of cell a to the global memory area at index gp+n.
-            // TODO implement 33, Copy to global
-            System.out.println("33, Copy to global is not implemented yet.");
-            System.exit(1);
+            mem[gp + b] = mem[bp + 2 + a];
             break;
         case fromGlobalCode: // 34
             // Copy the contents of the global memory cell at index gp+n into cell a.
-            // TODO implement 34, Copy from global
-            System.out.println("34, Copy from global is not implementeed yet.");
-            System.exit(1);
+            mem[bp + 2 + a] = mem[gp +b];
             break;
         default: 
             System.out.println( "Fatal error: unknown opcode [" + op + "]" );

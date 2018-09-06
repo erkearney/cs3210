@@ -182,15 +182,15 @@ public class VPL
             // Do nothing
             break;
         case labelCode: // 1
-            /* During program loading this instruction disappears, and all occurences of L
-            ** are replaced by the actualy index in mem where the opcode 1 would have
+            /* During program loading this instruction disappears, and all occurrences of L
+            ** are replaced by the actual index in mem where the opcode 1 would have
             ** been stored. 
             */
             System.out.println("1, This code should never be reached - error.");
             System.exit(1);
             break;
         case callCode: // 2
-            /* Do all thee steps necessary to set up for execution of the subprogram that
+            /* Do all the steps necessary to set up for execution of the subprogram that
             ** begins at L. 
             */
             if (labelLocations.containsKey(a))
@@ -325,6 +325,7 @@ public class VPL
         case oppCode: // 21
             // Put the opposite of the contents of cell b in cell a.
             // TODO this might not be right...could possibly be turn a 1 into a 0 (true to false) or vice versa
+            // ^^ This was Jerry's code so IDK. . .
             mem[ bp+2 + a ] = - mem[ bp+2 + b]; 
             break;
         case litCode: // 22
@@ -385,7 +386,9 @@ public class VPL
                 System.out.print((char) val);
             }
             else {
-                System.out.println("30, entry: " + val + " is not a valid ascii character.");
+                //System.out.println("30, entry: " + val + " is not a valid ascii character.");
+                // If the value stored is not a valid ASCII character, the program is supposed to
+                // do nothing, let's leave this as a comment though for debugging later.
             }
             break;
         case newCode: // 31

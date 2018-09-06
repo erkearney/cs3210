@@ -1,4 +1,9 @@
+--------------------------------- THE TESTS ARE FAILING -----------------------------------------
+Something's broken, the tests aren't doing what they're supposed to do, run "Java VPL exercise1a 50"
+to see for yourself, our work isn't done yet, I'll try to take a look and figure what's wrong this 
+weekend. We could definetely turn this in as a 'serious first effort' though.
+
 Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
-------------------------- DUE Monday, September 10 -------------------------
+-------------------------------- DUE Monday, September 10 --------------------------------------
 If you do anything make sure to add your name to the comment at the top of VPL.java
 To launch from terminal, use "java VPL someUnitTests 200"

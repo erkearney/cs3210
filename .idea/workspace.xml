@@ -17,8 +17,8 @@
       <file leaf-file-name="VPL.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/VPL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="622">
-              <caret line="335" column="43" selection-start-line="335" selection-start-column="43" selection-end-line="335" selection-end-column="43" />
+            <state relative-caret-position="995">
+              <caret line="413" column="27" selection-start-line="413" selection-start-column="27" selection-end-line="413" selection-end-column="27" />
               <folding>
                 <element signature="e#0#18387#0" expanded="true" />
               </folding>
@@ -27,6 +27,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bp</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,12 +150,12 @@
       <option name="presentableId" value="Default" />
       <updated>1536170418014</updated>
       <workItem from="1536170421908" duration="1615000" />
-      <workItem from="1536187077502" duration="832000" />
+      <workItem from="1536187077502" duration="1732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2447000" />
+    <option name="totallyTimeSpent" value="3347000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -215,8 +220,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/VPL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="335" column="43" selection-start-line="335" selection-start-column="43" selection-end-line="335" selection-end-column="43" />
+        <state relative-caret-position="995">
+          <caret line="413" column="27" selection-start-line="413" selection-start-column="27" selection-end-line="413" selection-end-column="27" />
           <folding>
             <element signature="e#0#18387#0" expanded="true" />
           </folding>

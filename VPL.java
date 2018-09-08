@@ -90,9 +90,8 @@ public class VPL
       }// have a line
     }// loop to load code
 
-    Map<Integer, Integer> labelLocations = new HashMap<>();
-
-    labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
+    Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(IntPair::first, IntPair::second));
+    //labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
     
     //System.out.println("after first scan:");
     //showMem( 0, k-1 );
@@ -197,6 +196,10 @@ public class VPL
             */
             if (labelLocations.containsKey(a))
             {
+                //set return bp
+                mem[sp - 2] = bp;
+                //set return ip
+                mem[sp -1] = ip;
                 ip = labelLocations.get(a);
                 bp = sp;
                 sp += 2;

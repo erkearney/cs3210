@@ -1,5 +1,5 @@
 // Original code written by Dr. Jerry Shultz
-// Additions made by Eric Kearney, Justin Pauga
+// Additions made by Eric Kearney, Justin Pauga, Hamza Khokar
 import java.io.*;
 import java.util.*;
 import java.util.logging.Logger;
@@ -12,7 +12,7 @@ public class VPL
 
   static int max;
   static int[] mem;
-  static int ip, bp, sp, rv, hp, numPassed, gp;
+  static int ip, bp, bpOffset, sp, rv, hp, numPassed, gp;
   static int step;
 
 
@@ -113,7 +113,7 @@ public class VPL
     showMem( 0, k-1 );
 
     // initialize registers:
-    bp = k;  sp = k+2;  ip = 0;  rv = -1;  hp = max;
+    bp = k; bpOffset = bp+2;  sp = k+2;  ip = 0;  rv = -1;  hp = max;
     // To store the real bp (accounting for return ip and return bp)
     int realBp = sp;
     numPassed = 0;
@@ -139,7 +139,7 @@ public class VPL
 
     do {
 
-    // show details of current step
+/*    // show details of current step
       System.out.println("--------------------------");
       System.out.println("Step of execution with IP = " + ip + " opcode: " +
           mem[ip] + 
@@ -151,7 +151,7 @@ public class VPL
       showMem( codeEnd+1, sp+3 );
       System.out.println("hit <enter> to go on" );
       keys.nextLine();
-
+*/
       oldIp = ip;
 
       op = mem[ ip ];  ip++;
@@ -198,6 +198,7 @@ public class VPL
             {
                 ip = labelLocations.get(a);
                 bp = sp;
+                bpOffset = bp+2;
                 sp += 2;
                 break;
             }
@@ -220,6 +221,7 @@ public class VPL
             sp = bp;
             ip = mem[bp];
             bp = mem[bp +1];
+            bpOffset = bp+2;
             break;
         case getRetvalCode: // 6
             // Copy the value stored in rv into cell a.
@@ -227,7 +229,7 @@ public class VPL
             break;
         case jumpCode: // 7
             // Change ip to L.
-            System.out.println(labelLocations);
+            System.out.println("labelLocations: " + labelLocations);
             if (labelLocations.containsKey(a))
             {
                 ip = labelLocations.get(a);
@@ -237,7 +239,7 @@ public class VPL
             /* If the value stored in cell a is non-zero, change ip to L, otherwise
             ** move ip to the next instruction.
             */
-            if(mem[bp+2 + b] != 0)
+            if(mem[bpOffset + b] != 0)
             {
                 if (labelLocations.containsKey(a))
                 {
@@ -248,78 +250,78 @@ public class VPL
             break;
         case addCode: // 9
             // Add the values in cell b and cell c and store the result in cell a.
-            mem[bp+2 + a] = mem[bp + 2 + b] + mem[bp + 2 + c];
+            mem[bpOffset + a] = mem[bp+2 + b] + mem[bp+2 + c];
             break;
         case subCode: // 10
             // Do cell b - cell c and store the result in cell a.
-            mem[bp+2 + a] = mem[bp+2 + b] - mem[bp+2 + c];
+            mem[bpOffset + a] = mem[bp+2 + b] - mem[bp+2 + c];
             break;
         case multCode: // 11
             // Do cell b * cell c and store the result in call a.
-            mem[bp+2 + a] = mem[bp+2 + b] * mem[bp + 2 + c];
+            mem[bpOffset + a] = mem[bp+2 + b] * mem[bp+2 + c];
             break;
         case divCode: // 12
             // Do cell b / cell c and store the result in cell a.
-            mem[bp+2 + a] = mem[bp+2 + b] / mem[bp+2 + c];
+            mem[bpOffset + a] = mem[bp+2 + b] / mem[bp+2 + c];
             break;
         case remCode: // 13
             // Do cell b % cell c and store the result in cell a.
-            mem[bp+2 + a] = mem[bp+2 + b] % mem[bp+2 + c];
+            mem[bpOffset + a] = mem[bp+2 + b] % mem[bp+2 + c];
             break;
         case equalCode: // 14
             // Do cell b == cell c and store the result in cell a.
-            if (mem[bp+2 + b] == mem[bp+2 + c]) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] == mem[bp+2 + c]) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;    
+                mem[bpOffset + a] = 0;    
             }
             break;
         case notEqualCode: // 15
             // Do cell b != cell c and store the result in cell a.
-            if (mem[bp+2 + b] != mem[bp+2 + c]) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] != mem[bp+2 + c]) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;    
+                mem[bpOffset + a] = 0;    
             }
             break;
         case lessCode: // 16
             // Do cell b < cell c, and store the result in cell a.
-            if (mem[bp+2 + b] < mem[bp+2 + c]) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] < mem[bp+2 + c]) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;    
+                mem[bpOffset + a] = 0;    
             }
             break;
         case lessEqualCode: // 17
             // Do cell b <= cell c, and store the result in cell a.
-            if (mem[bp+2 + a] <= mem[bp+2 + c]) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + a] <= mem[bp+2 + c]) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0; 
+                mem[bpOffset + a] = 0; 
             }
             break;
         case andCode: // 18
             // Do cell b && cell c and store the result in cell a.
-            if (mem[bp+2 + b] > 0 && mem[bp+2 + c] > 0) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] > 0 && mem[bp+2 + c] > 0) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;    
+                mem[bpOffset + a] = 0;    
             }
             break;
         case orCode: // 19
             // Do cell b || cell c and store the result in cell a.
-            if (mem[bp+2 + b] > 0 || mem[bp+2 + c] > 0) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] > 0 || mem[bp+2 + c] > 0) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;    
+                mem[bpOffset + a] = 0;    
             }
             break;
         case notCode: // 20
             // If cell b == 0, put 1 in cell a, otherwise, put 0 in cell a.
-            if (mem[bp+2 + b] == 0) {
-                mem[bp+2 + a] = 1;    
+            if (mem[bpOffset + b] == 0) {
+                mem[bpOffset + a] = 1;    
             } else {
-                mem[bp+2 + a] = 0;
+                mem[bpOffset + a] = 0;
             }
             break;
         case oppCode: // 21
@@ -330,11 +332,11 @@ public class VPL
             break;
         case litCode: // 22
             // Put n in cell a.
-            mem[bp+2 + a] = b;
+            mem[bpOffset + a] = b;
             break;
         case copyCode: // 23
             // Copy the value in cell b into cell a.
-            mem[sp + a] = mem[bp+2 + b];
+            mem[sp + a] = mem[bpOffset + b];
             break;
         case getCode: // 24
             /* Get the value stored in the heap at the index obtained by adding the value of
@@ -346,7 +348,7 @@ public class VPL
             /* Take the value from cell c and store it in the heap at the location with index
             ** computed as the value in cell a plus the value in cell b.
             */
-            int memVal = mem[sp + a] + mem[bp + 2 + b];
+            int memVal = mem[sp + a] + mem[bpOffset + b];
             mem[hp + memVal] = mem[sp + c];
             break;
         case haltCode: // 26
@@ -358,7 +360,7 @@ public class VPL
             //Scanner userIn = new Scanner(System.in);
             System.out.print("? ");
             try {
-                mem[bp+2 + a] = keys.nextInt();
+                mem[bpOffset + a] = keys.nextInt();
                 /* TODO When the user hits ENTER, it will create a new line, even though a new line
                 ** command was never passed, find out if this is a problem. Also this is using the
                 ** same scanner as the debugger, which might be a bad idea, but I guess having two
@@ -372,7 +374,7 @@ public class VPL
             break;
         case outputCode: // 28
             // Display the value stored in call a in the console
-            System.out.println(mem[bp+2 + a]);
+            System.out.println(mem[bpOffset + a]);
             break;
         case newlineCode: // 29
             // Move the console cursor to the beginning of the next line
@@ -382,7 +384,7 @@ public class VPL
             /* If the value stored in cell a is between 32 and 126, display the corresponding symbol
             ** at the console cursor, otherwise do nothing.
             */
-            int val = mem[bp+2 + a];
+            int val = mem[bpOffset + a];
             if (val >= 32 && val <= 126)
             {
                 System.out.print((char) val);
@@ -425,7 +427,7 @@ public class VPL
 
       /*
       if ( op == oppCode ) {
-         mem[ sp + a ] = - mem[ bp+2 + b ];
+         mem[ sp + a ] = - mem[ bpOffset + b ];
       }
 
 

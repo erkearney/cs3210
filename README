@@ -1,7 +1,4 @@
---------------------------------- THE TESTS ARE FAILING -----------------------------------------
-Something's broken, the tests aren't doing what they're supposed to do, run "Java VPL exercise1a 50"
-to see for yourself, our work isn't done yet, I'll try to take a look and figure what's wrong this 
-weekend. We could definetely turn this in as a 'serious first effort' though.
+Loops are broken, the labelLocations hashmap is never being populated with anything.
 
 Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
 -------------------------------- DUE Monday, September 10 --------------------------------------

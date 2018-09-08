@@ -1,5 +1,5 @@
 // Original code written by Dr. Jerry Shultz
-// Additions made by Eric Kearney
+// Additions made by Eric Kearney, Justin Pauga
 import java.io.*;
 import java.util.*;
 import java.util.logging.Logger;
@@ -114,6 +114,8 @@ public class VPL
 
     // initialize registers:
     bp = k;  sp = k+2;  ip = 0;  rv = -1;  hp = max;
+    // To store the real bp (accounting for return ip and return bp)
+    int realBp = bp + 2;
     numPassed = 0;
     
     int codeEnd = bp-1;
@@ -330,11 +332,11 @@ public class VPL
             break;
         case litCode: // 22
             // Put n in cell a.
-            mem[a] = b;
+            mem[bp +2 + a] = b;
             break;
         case copyCode: // 23
             // Copy the value in cell b into cell a.
-            mem[a] = mem[b];
+            mem[bp + 2 + a] = mem[bp + 2 + b];
             break;
         case getCode: // 24
             /* Get the value stored in the heap at the index obtained by adding the value of

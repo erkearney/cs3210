@@ -1,7 +1,7 @@
 0 Solution to exercise 1b, use for testing
 0 This program should ask the user for an
 0 input, and display 1 if that input is
-0 odd and 0 if it's even.
+0 odd and 2 if it's even.
 
 4 4
 27 0

@@ -1,4 +1,4 @@
------------Loops are broken, the labelLocations hashmap is never being populated with anything.-----------
+Loops are fixed, but we need to make sure we're all on the same page for call, 2 and return, 5, global variables, 32+ are broken too
 
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.
 

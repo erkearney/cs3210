@@ -15,8 +15,6 @@ public class VPL
   static int ip, bp, bpOffset, sp, rv, hp, numPassed, gp;
   static int step;
 
-
-
   public static void main(String[] args) throws Exception {
 
     keys = new Scanner( System.in );
@@ -90,10 +88,6 @@ public class VPL
       }// have a line
     }// loop to load code
 
-    Map<Integer, Integer> labelLocations = new HashMap<>();
-
-    labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
-    
     //System.out.println("after first scan:");
     //showMem( 0, k-1 );
 
@@ -139,7 +133,7 @@ public class VPL
 
     do {
 
-/*    // show details of current step
+/*      // show details of current step
       System.out.println("--------------------------");
       System.out.println("Step of execution with IP = " + ip + " opcode: " +
           mem[ip] + 
@@ -194,6 +188,11 @@ public class VPL
             /* Do all the steps necessary to set up for execution of the subprogram that
             ** begins at L. 
             */
+            // TODO, someone fix this shit. I'm sure it's very wrong.
+            mem[bp] = ip+1;
+            mem[bp+1] = bpOffset;
+            ip = a;
+            /*
             if (labelLocations.containsKey(a))
             {
                 ip = labelLocations.get(a);
@@ -204,6 +203,7 @@ public class VPL
             }
             System.out.println("2, no label found");
             System.exit(1);
+            */
             break;
         case passCode: // 3
             // Push the contents of cell a on the stack. 
@@ -228,24 +228,18 @@ public class VPL
             mem[a] = rv;
             break;
         case jumpCode: // 7
-            // Change ip to L.
-            System.out.println("labelLocations: " + labelLocations);
-            if (labelLocations.containsKey(a))
-            {
-                ip = labelLocations.get(a);
-            }
+            /* Change ip to L.
+            ** The argument a has already been changed to be the instruction number
+            ** we're supposed to jump to.
+            */
+            ip = a;
             break;
         case condJumpCode: // 8
             /* If the value stored in cell a is non-zero, change ip to L, otherwise
             ** move ip to the next instruction.
             */
-            if(mem[bpOffset + b] != 0)
-            {
-                if (labelLocations.containsKey(a))
-                {
-                    System.out.println("8 Test");
-                    ip = labelLocations.get(a);
-                }
+            if(mem[bpOffset + b] != 0) {
+                ip = a;
             }
             break;
         case addCode: // 9

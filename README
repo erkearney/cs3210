@@ -1,21 +1,5 @@
 -------------------------------------------WHAT STILL NEEDS TO BE DONE:-------------------------------------------
-Call--2 - Call is supposed to create a brand new stack frame for the subprogram, the value of the very first cell,
-cell '-2', in the new stack frame is returnIp, the value of the second cell, cell '-1', should be returnBp. Then 
-the instruction pointer should be changed to the label that was passed with call--2. The base pointer needs to then
-be set to the subprogram's number of instructions +1, but how will we know how many instructions the subprogram has?
-The stack pointer needs to be set to the base pointer +2, and bpOffset obviously needs to be set to bp+2, the heap 
-pointer should be set to the end of the subprogram's memory, but how will we know what the end of the subprogram's 
-memory is?
-
-Return--5 - Stuff the value in cell mem[bpOffset + a] into rv. Change bp to mem[bp+1], change ip to mem[bp].
-How will we know what to change the stack pointer and heap pointer to?
-
-Allocate global space--32 - A global variable is meant to be stored just outside of the program's memory, so if 
-this gets called, should we resize the memory array, or should we have a sepearte array that's JUST for global
-variables? The latter would be much easier, but I'm not sure it's what Jerry wants.
-
-Copy to/from global--33/34 - How these work will change depending on how we implement global variables.
-
+Someone try to break it, I think we're done, great work everyone!
 -------------------------------------------------------------------------------------------------------------------
 
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.

@@ -90,9 +90,6 @@ public class VPL
       }// have a line
     }// loop to load code
 
-    //Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(label.first, label.second));
-    //labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
-    
     //System.out.println("after first scan:");
     //showMem( 0, k-1 );
 
@@ -194,23 +191,18 @@ public class VPL
             /* Do all thee steps necessary to set up for execution of the subprogram that
             ** begins at L. 
             */
-            if (labelLocations.containsKey(a))
-            {
-                int returnBp = bp;
-                int returnIp = ip;
+            int returnBp = bp;
+            int returnIp = ip;
 
-                ip = labelLocations.get(a);
-                bp = sp;
-                sp += 2;
-                bpOffset = bp + 2;
-                //set return bp
-                mem[sp - 2] = returnBp;
-                //set return ip
-                mem[sp -1] = returnIp;
-                break;
-            }
-            System.out.println("2, no label found");
-            System.exit(1);
+            ip = a; 
+            // Move onto a new stack frame
+            bp = sp;
+            bpOffset = bp + 2;
+            sp += 2;
+            //set return bp
+            mem[bp] = returnBp;
+            //set return ip
+            mem[bp+1] = returnIp;
             break;
         case passCode: // 3
             // Push the contents of cell a on the stack. 
@@ -225,6 +217,7 @@ public class VPL
             ** putting the value stored in cell a in rv. 
             */
             rv = mem[bpOffset + a];
+            // Move back to the previous stack frame
             sp = bp;
             ip = mem[bp];
             bp = mem[bp +1];
@@ -403,13 +396,16 @@ public class VPL
             ** value of sp to n cells beyond the end of stored program memory, and sets gp to the end of
             ** stored program memory.
             */
-            if (ip == 0)
-               {
-                    gp = codeEnd++;
-                    bp = codeEnd + a;
-                    bpOffset = bp +2;
-                    sp += a;
-               }
+            // First instruction is 2, no idea why. . .
+            if (ip == 2) {
+                gp = codeEnd+1;
+                bp += a;
+                bpOffset = bp+2;
+                sp += a;
+            } else {
+                System.out.println("Error, 32 must be the FIRST instruction, there was one at " + ip);
+                System.exit(1);
+            }
             break;
         case toGlobalCode: // 33
             // Copy the contents of cell a to the global memory area at index gp+n.

@@ -234,28 +234,21 @@ public class VPL
             // Copy the value stored in rv into cell a.
             mem[bpOffset + a] = rv;
             break;
-        case jumpCode: // 7
-            // Change ip to L.
-            if (labelLocations.containsKey(a))
-            {
-                ip = labelLocations.get(a);
-            }
-            break;
-        case condJumpCode: // 8
-            /* If the value stored in cell a is non-zero, change ip to L, otherwise
-            ** move ip to the next instruction.
-            */
-            if(mem[bpOffset + b] != 0)
-            {
-                if (labelLocations.containsKey(a))
-                {
-                    ip = labelLocations.get(a);
-                }
-            }
-            else {
-                ip += 3;
-            }
-            break;
+          case jumpCode: // 7
+              /* Change ip to L.
+               ** The argument a has already been changed to be the instruction number
+               ** we're supposed to jump to.
+               */
+              ip = a;
+              break;
+          case condJumpCode: // 8
+              /* If the value stored in cell a is non-zero, change ip to L, otherwise
+               ** move ip to the next instruction.
+               */
+              if(mem[bpOffset + b] != 0) {
+                  ip = a;
+              }
+              break;
         case addCode: // 9
             // Add the values in cell b and cell c and store the result in cell a.
             mem[bpOffset + a] = mem[bpOffset + b] + mem[bpOffset + c];

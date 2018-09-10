@@ -90,7 +90,7 @@ public class VPL
       }// have a line
     }// loop to load code
 
-    Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(IntPair::first, IntPair::second));
+    Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(label.first, label.second));
     //labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
     
     //System.out.println("after first scan:");

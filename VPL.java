@@ -90,7 +90,7 @@ public class VPL
       }// have a line
     }// loop to load code
 
-    Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(label.first, label.second));
+    //Map<Integer, Integer> labelLocations = labels.stream().collect(Collectors.toMap(label.first, label.second));
     //labels.stream().map(pair -> labelLocations.put(pair.first, pair.second +1));
     
     //System.out.println("after first scan:");
@@ -318,7 +318,7 @@ public class VPL
             break;
         case orCode: // 19
             // Do cell b || cell c and store the result in cell a.
-            if (membpOffset + b] > 0 || mem[bpOffset + c] > 0) {
+            if (mem[bpOffset + b] > 0 || mem[bpOffset + c] > 0) {
                 mem[bpOffset + a] = 1;
             } else {
                 mem[bpOffset + a] = 0;
@@ -410,13 +410,13 @@ public class VPL
             ** value of sp to n cells beyond the end of stored program memory, and sets gp to the end of
             ** stored program memory.
             */
-            If (ip == 0)
-                {
+            if (ip == 0)
+               {
                     gp = codeEnd++;
                     bp = codeEnd + a;
                     bpOffset = bp +2;
                     sp += a;
-                }
+               }
             break;
         case toGlobalCode: // 33
             // Copy the contents of cell a to the global memory area at index gp+n.

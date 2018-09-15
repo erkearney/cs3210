@@ -15,8 +15,10 @@ public class VPL
   static int ip, bp, sp, rv, hp, numPassed, gp;
   static int step;
   static boolean replacedLabels = false;
+  // Used to keep track of which cell to push onto when 3, pass is called
+  static int stackPushCounter = 0;
 
-
+  static boolean debug = false;
 
   public static void main(String[] args) throws Exception {
 
@@ -136,20 +138,20 @@ public class VPL
     // *****************************************************************
 
     do {
-
-    // show details of current step
-      System.out.println("--------------------------");
-      System.out.println("Step of execution with IP = " + ip + " opcode: " +
-          mem[ip] + 
-         " bp = " + bp + " sp = " + sp + " hp = " + hp + " rv = " + rv );
-      System.out.println(" chunk of code: " +  mem[ip] + " " +
-                            mem[ip+1] + " " + mem[ip+2] + " " + mem[ip+3] );
-      System.out.println("--------------------------");
-      System.out.println( " memory from " + (codeEnd+1) + " up: " );
-      showMem( codeEnd+1, sp+3 );
-      System.out.println("hit <enter> to go on" );
-      keys.nextLine();
-
+        if (debug == true) {
+            // show details of current step
+            System.out.println("--------------------------");
+            System.out.println("Step of execution with IP = " + ip + " opcode: " +
+              mem[ip] + 
+             " bp = " + bp + " sp = " + sp + " hp = " + hp + " rv = " + rv );
+            System.out.println(" chunk of code: " +  mem[ip] + " " +
+                                mem[ip+1] + " " + mem[ip+2] + " " + mem[ip+3] );
+            System.out.println("--------------------------");
+            System.out.println( " memory from " + (codeEnd+1) + " up: " );
+            showMem( codeEnd+1, sp+3 );
+            System.out.println("hit <enter> to go on" );
+            keys.nextLine();
+        }
 
       oldIp = ip;
 
@@ -201,14 +203,17 @@ public class VPL
             bp = sp;
             bpOffset = bp + 2;
             sp += 2;
+            // Reset stackPushCounter
+            stackPushCounter = 0;
             //set return bp
-            mem[bp] = returnBp;
+            mem[bp] = returnIp;
             //set return ip
-            mem[bp+1] = returnIp;
+            mem[bp+1] = returnBp;
             break;
         case passCode: // 3
             // Push the contents of cell a on the stack. 
-            mem[a] = mem[bpOffset + a];
+            mem[sp+2 + stackPushCounter] = mem[bpOffset + a];
+            stackPushCounter++;
             break;
         case allocCode: // 4
             // Increase sp by n to make space for local variables in the current stack frame.
@@ -219,10 +224,11 @@ public class VPL
             ** putting the value stored in cell a in rv. 
             */
             rv = mem[bpOffset + a];
-            // Move back to the previous stack frame
             sp = bp;
+            // Reset stackPushCounter
+            stackPushCounter = 0;
             ip = mem[bp];
-            bp = mem[bp +1];
+            bp = mem[bp+1];
             bpOffset = bp + 2;
             break;
         case getRetvalCode: // 6
@@ -350,7 +356,7 @@ public class VPL
             // Halt execution.
             System.exit(0);
         case inputCode: // 27
-            System.out.format("DEBUG: bpOffset: %d, a: %d, mem[bpOffset + a]: %d%n", bpOffset, a, mem[bpOffset + a]);
+            //System.out.format("DEBUG: bpOffset: %d, a: %d, mem[bpOffset + a]: %d%n", bpOffset, a, mem[bpOffset + a]);
             // Print a ? and a space in the console and wait for an integer value to be typed 
             // by the user, and then store it in cell a.
             //Scanner userIn = new Scanner(System.in);
@@ -363,7 +369,7 @@ public class VPL
                 /* TODO When the user hits ENTER, it will create a new line, even though a new line
                 ** command was never passed, find out if this is a problem.
                 */
-                System.out.format("DEBUG: mem[bpOffset + a] = %d%n", mem[bpOffset + a]);
+                //System.out.format("DEBUG: mem[bpOffset + a] = %d%n", mem[bpOffset + a]);
             } catch (java.util.InputMismatchException e1) {
                System.out.print("You must input an integer");
                System.exit(1);
@@ -564,7 +570,7 @@ public class VPL
       } else if(k-bp == 0) {
         System.out.println("-------STACK FRAME BEGINS-------");    
         System.out.format("ip: %d - stack cell: X - value: %d%n", k, mem[k]);    
-      } else if (k == sp) {
+      } else if (k == sp+1) {
         System.out.println("-------STACK FRAME ENDS-------");    
         System.out.format("ip: %d - stack cell: %d - value: %d%n", k, (k-bp-2), mem[k]);
       } else if(k-bp-2 >= 0){

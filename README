@@ -1,5 +1,8 @@
 -------------------------------------------WHAT STILL NEEDS TO BE DONE:-------------------------------------------
-Someone try to break it, I think we're done, great work everyone!
+Someone else run all the tests on your machine and see if it works please, if someone could write their own VPL
+program to see if it works, that'd be amazing.
+
+Does anyone know WTF exercise4 is supposed to do??? The amount of jumping is ridiculous.
 -------------------------------------------------------------------------------------------------------------------
 
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.
@@ -12,6 +15,10 @@ is just bp+2. Remember that every time we update the base pointer, we need to up
 
 sp - Stack Pointer: Points to the END of the stack frame, default = bp+2.
 
+stackPushCounter: Keeps track of which cell to push to when 3, pass is called. The default value
+is sp+2, stackPushCounter should be incremented every time 3, pass is called, and should be reset
+to sp+2 whenever the stack pointer is modified.
+
 rv - Return Value: Holds the value a function returned, default = -1.
 
 hp - Heap Pointer: Points to the BEGINNING of the Heap, default = end of memory (max).
@@ -19,6 +26,7 @@ hp - Heap Pointer: Points to the BEGINNING of the Heap, default = end of memory 
 gp - Global Pointer: Used for global variables, default = end of memory (max) +1.
 
 Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
+
 ------------------------------------- DUE Monday, September 10 -------------------------------------------
 If you do anything make sure to add your name to the comment at the top of VPL.java
 To launch from terminal, use "java VPL tests/exercise1b 50", you will be asked to input a number,

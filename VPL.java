@@ -14,6 +14,7 @@ public class VPL
   static int[] mem;
   static int ip, bp, sp, rv, hp, numPassed, gp;
   static int step;
+  static boolean replacedLabels = false;
 
 
 
@@ -107,6 +108,7 @@ public class VPL
 
     System.out.println("after replacing labels:");
     showMem( 0, k-1 );
+    replacedLabels = true;
 
     // initialize registers:
     bp = k;  sp = k+2;  ip = 0;  rv = -1;  hp = max;
@@ -135,7 +137,7 @@ public class VPL
 
     do {
 
-/*    // show details of current step
+    // show details of current step
       System.out.println("--------------------------");
       System.out.println("Step of execution with IP = " + ip + " opcode: " +
           mem[ip] + 
@@ -147,7 +149,7 @@ public class VPL
       showMem( codeEnd+1, sp+3 );
       System.out.println("hit <enter> to go on" );
       keys.nextLine();
-*/
+
 
       oldIp = ip;
 
@@ -206,7 +208,7 @@ public class VPL
             break;
         case passCode: // 3
             // Push the contents of cell a on the stack. 
-            mem[sp +2] = mem[bpOffset + a];
+            mem[a] = mem[bpOffset + a];
             break;
         case allocCode: // 4
             // Increase sp by n to make space for local variables in the current stack frame.
@@ -348,16 +350,20 @@ public class VPL
             // Halt execution.
             System.exit(0);
         case inputCode: // 27
+            System.out.format("DEBUG: bpOffset: %d, a: %d, mem[bpOffset + a]: %d%n", bpOffset, a, mem[bpOffset + a]);
             // Print a ? and a space in the console and wait for an integer value to be typed 
             // by the user, and then store it in cell a.
-            Scanner userIn = new Scanner(System.in);
+            //Scanner userIn = new Scanner(System.in);
             System.out.print("? ");
             try {
-                mem[bpOffset + a] = userIn.nextInt();
+                /* Use the same scanner used for debugging, I don't know why but having two scanners
+                ** seems to screw things up.
+                */
+                mem[bpOffset +a] = keys.nextInt();
                 /* TODO When the user hits ENTER, it will create a new line, even though a new line
                 ** command was never passed, find out if this is a problem.
                 */
-                userIn.close();
+                System.out.format("DEBUG: mem[bpOffset + a] = %d%n", mem[bpOffset + a]);
             } catch (java.util.InputMismatchException e1) {
                System.out.print("You must input an integer");
                System.exit(1);
@@ -381,7 +387,7 @@ public class VPL
                 System.out.print((char) val);
             }
             else {
-                System.out.println("30, entry: " + val + " is not a valid ascii character.");
+                System.out.format("30, entry: %d is not a valid ascii character.", val);
             }
             break;
         case newCode: // 31
@@ -416,7 +422,7 @@ public class VPL
             mem[bpOffset + a] = mem[gp +b];
             break;
         default: 
-            System.out.println( "Fatal error: unknown opcode [" + op + "]" );
+            System.out.format("Fatal error at ip: %d, unknown opcode [%d]", ip, op);
             System.exit(1);
       }
 
@@ -542,7 +548,7 @@ public class VPL
    
     else
     {
-      System.out.println("Fatal error: unknown opcode [" + opcode + "]" );
+      System.out.format("Fatal error at ip: %d, unknown opcode [%d]%n", ip, opcode);
       System.exit(1);
       return -1;
     }
@@ -553,7 +559,20 @@ public class VPL
   {
     for( int k=a; k<=b; ++k )
     {
-      System.out.println( k + ": " + mem[k] );
+      if(k-bp < 0 || replacedLabels == false) {
+         System.out.format("%d: %d%n", k, mem[k]); 
+      } else if(k-bp == 0) {
+        System.out.println("-------STACK FRAME BEGINS-------");    
+        System.out.format("ip: %d - stack cell: X - value: %d%n", k, mem[k]);    
+      } else if (k == sp) {
+        System.out.println("-------STACK FRAME ENDS-------");    
+        System.out.format("ip: %d - stack cell: %d - value: %d%n", k, (k-bp-2), mem[k]);
+      } else if(k-bp-2 >= 0){
+        System.out.format("ip: %d - stack cell: %d - value: %d%n", k, (k-bp-2), mem[k]);
+      } else {
+        System.out.format("ip: %d - stack cell: X - value: %d%n", k, mem[k]);    
+      }
+      //System.out.println( k + ": " + mem[k] );
     }
   }// showMem
 

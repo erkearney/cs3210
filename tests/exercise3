@@ -1,0 +1,103 @@
+0 main subprogram
+0   cells used:
+0
+0    0     holds starting index of list
+0    1     holds n=# of items in list
+
+4 2
+
+27 1
+
+3 1
+2 100000
+
+6 0
+
+28 0
+29
+
+3 0
+2 200000
+
+29
+
+26
+
+0 list input subprogram
+0   cells used
+
+0    0   parameter (n=desired number of items in list)
+0    1   literal 1
+0    2   n+1
+0    3   index (k) in loop
+0    4   holds starting point (a) of list
+0    5   boolean result of n < k
+0    6   input value
+
+1 100000
+
+4 6
+
+22 1 1   create 1
+9 2 0 1  cell 2 = n+1
+
+31 4 2    a = new int[n+1]
+
+22 3 0    k=0
+25 4 3 0  a[k] = n
+
+22 3 1   k=1
+
+1 102     top of loop
+
+16 5 0 3  cell 5 =  n < k
+8 101 5   if n < k jump to 101
+
+27 6     cell 6 = input value
+
+25 4 3 6  a[k] = input value
+
+9 3 3 1   k=k+1
+
+7 102     jump to top of loop
+1 101     exit point of loop
+
+5 4       return a
+
+0  list display subprogram
+0    cells used:
+0    0   index of start of object (a)
+0    1   literal 1
+0    2   number of items in list (n)
+0    3   index k
+0    4   ascii code for a space (32)
+0    5   n < k  
+0    6   temp
+
+1 200000
+
+4 5
+
+22 1 1
+22 4 32
+
+22 3 0   k=0
+24 2 0 3  n=a[0]
+
+22 3 1   k=1
+
+1 201   top of loop
+16 5 2 3   cell 5 = n < k
+8 202 5   if n < k exit loop
+
+24 6 0 3         temp = a[k]
+
+28 6   print temp
+30 4   print a space
+
+9 3 3 1  k=k+1
+
+7 201   jump to top of loop
+1 202   exit loop
+
+5 0     return (value stored in RV irrelevant)

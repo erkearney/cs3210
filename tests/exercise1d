@@ -1,0 +1,43 @@
+0  Local cell:   Name:
+0  0             x
+0  1             1
+0  2             2
+0  3             3
+0  4             x==1, x % 2
+
+4 5  allocate local cells in main stack frame
+
+22 1 1      set the literals
+22 2 2
+22 3 3
+
+27 0   x <- input
+
+1 1001   top of loop
+14 4 0 1   local cell 4 <-  x == 1
+
+8 1002 4    if x==1 exit loop
+
+28 0    println x
+29
+
+13 4 0 2   local cell 4 <- x%2, so is 0 if x even, 1 if x odd
+
+8 1003 4   if x is odd jump   
+
+   0  didn't jump so x is even
+   12 0 0 2    x <- x / 2
+
+7 1004    skip over x odd code
+1 1003  start of x odd case
+
+   11 0 0 3   x <- x*3
+    9 0 0 1   x <- x+1
+
+1 1004
+
+7 1001   jump to top of loop
+
+1 1002   exit loop
+
+26

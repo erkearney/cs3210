@@ -1,0 +1,4 @@
+# Ignore compiled Java and system files
+*.class
+*.idea
+*.swp

@@ -1,0 +1,23 @@
+-----------Loops are broken, the labelLocations hashmap is never being populated with anything.-----------
+
+ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.
+
+bp - Base Pointer: Points to the beginning of the program's memory, default = number of instructions (k).
+
+bpOffset - Base Pointer Offset: If the programmer references cell 5, VPL should access the 5th cell in the
+stack frame. The stack frame begins two cells after the base pointer. So cell 5 = mem[bp+2 + 5]. bpOffset 
+is just bp+2. Remember that every time we update the base pointer, we need to update bpOffset as well.
+
+sp - Stack Pointer: Points to the END of the stack frame, default = bp+2.
+
+rv - Return Value: Holds the value a function returned, default = -1.
+
+hp - Heap Pointer: Points to the BEGINNING of the Heap, default = end of memory (max).
+
+gp - Global Pointer: Used for global variables, default = end of memory (max) +1.
+
+Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
+------------------------------------- DUE Monday, September 10 -------------------------------------------
+If you do anything make sure to add your name to the comment at the top of VPL.java
+To launch from terminal, use "java VPL tests/exercise1b 50", you will be asked to input a number,
+the program should output a '2' if the input is even and a '1' if the input is odd.

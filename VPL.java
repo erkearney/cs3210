@@ -189,9 +189,12 @@ public class VPL
             ** begins at L. 
             */
             // TODO, someone fix this shit. I'm sure it's very wrong.
-            mem[bp] = ip+1;
-            mem[bp+1] = bpOffset;
+
             ip = a;
+
+            /*            mem[bp] = ip+1;
+            mem[bp+1] = bpOffset;
+            ip = a;*/
             /*
             if (labelLocations.containsKey(a))
             {
@@ -288,7 +291,7 @@ public class VPL
             break;
         case lessEqualCode: // 17
             // Do cell b <= cell c, and store the result in cell a.
-            if (mem[bpOffset + a] <= mem[bp+2 + c]) {
+            if (mem[bpOffset + b] <= mem[bp+2 + c]) {
                 mem[bpOffset + a] = 1;    
             } else {
                 mem[bpOffset + a] = 0; 
@@ -402,10 +405,13 @@ public class VPL
             ** stored program memory.
             */
             //Arrays.copyOf() => https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html#copyOf(boolean[],%20int)
-            mem = Arrays.copyOf(mem, max+a);
-            sp = mem[max + a-1];
+            mem = Arrays.copyOf(mem, max + a);
+
+            sp = max + a - 1 ;
             gp = max;
-            break;
+          //sp = mem[max + a-1];
+          //gp = max;
+          break;
         case toGlobalCode: // 33
             // Copy the contents of cell a to the global memory area at index gp+n.
             mem[gp + b] = mem[sp + a];

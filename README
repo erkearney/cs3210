@@ -5,28 +5,43 @@ program to see if it works, that'd be amazing.
 Does anyone know WTF exercise4 is supposed to do??? The amount of jumping is ridiculous.
 -------------------------------------------------------------------------------------------------------------------
 
+
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.
-
+-------------------------------------------------------------------------------------------------------------------
 bp - Base Pointer: Points to the beginning of the program's memory, default = number of instructions (k).
-
+-------------------------------------------------------------------------------------------------------------------
 bpOffset - Base Pointer Offset: If the programmer references cell 5, VPL should access the 5th cell in the
 stack frame. The stack frame begins two cells after the base pointer. So cell 5 = mem[bp+2 + 5]. bpOffset 
 is just bp+2. Remember that every time we update the base pointer, we need to update bpOffset as well.
-
+-------------------------------------------------------------------------------------------------------------------
 sp - Stack Pointer: Points to the END of the stack frame, default = bp+2.
-
+-------------------------------------------------------------------------------------------------------------------
 stackPushCounter: Keeps track of which cell to push to when 3, pass is called. The default value
 is sp+2, stackPushCounter should be incremented every time 3, pass is called, and should be reset
 to sp+2 whenever the stack pointer is modified.
-
+-------------------------------------------------------------------------------------------------------------------
 rv - Return Value: Holds the value a function returned, default = -1.
-
+-------------------------------------------------------------------------------------------------------------------
 hp - Heap Pointer: Points to the BEGINNING of the Heap, default = end of memory (max).
+-------------------------------------------------------------------------------------------------------------------
+heapIndex - Used to determine which cell to access when 24, get or 25, put are called. The default value
+is hp. When 24 or 25 are called, cell b or cell c should contain the value of the heap pointer, the other
+cell should contain the value of the offset. Here is an example of correctly accessing the second element
+in the heap:
 
+22 1 2              Put the literal value 2 in cell 1
+31 0 1              Make room for 2 heap cells, store the new value of hp in cell 0
+24 0 1              Cell 0 holds the value of the hp, cell 1 holds the value 2.
+
+When 24 or 25 are called, heapIndex is calculated by adding the values of cell b and cell c, then,
+we access the correct cell using mem[heapIndex].
+-------------------------------------------------------------------------------------------------------------------
 gp - Global Pointer: Used for global variables, default = end of memory (max) +1.
+-------------------------------------------------------------------------------------------------------------------
+
 
 Currently working on Project 1; "Implement VPL by starting from the given file VPL.java. . .".
-
+-------------------------------------------------------------------------------------------------------------------
 ------------------------------------- DUE Monday, September 10 -------------------------------------------
 If you do anything make sure to add your name to the comment at the top of VPL.java
 To launch from terminal, use "java VPL tests/exercise1b 50", you will be asked to input a number,

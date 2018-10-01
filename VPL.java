@@ -17,6 +17,8 @@ public class VPL
   static boolean replacedLabels = false;
   // Used to keep track of which cell to push onto when 3, pass is called
   static int stackPushCounter = 0;
+  // Used to determine which cell in the heap to access when 24, get or 25, put are called.
+  static int heapIndex = hp;
 
   static boolean debug = false;
 
@@ -202,7 +204,7 @@ public class VPL
             // Move onto a new stack frame
             bp = sp;
             bpOffset = bp + 2;
-            sp += 2;
+            sp += stackPushCounter+2;
             // Reset stackPushCounter
             stackPushCounter = 0;
             //set return bp
@@ -343,14 +345,15 @@ public class VPL
             /* Get the value stored in the heap at the index obtained by adding the value of
             ** cell b and the value of cell c and copy it into cell a.
             */
-            mem[bpOffset + a] = mem[hp + b] + mem[hp + c];
+            heapIndex = mem[bpOffset + b] + mem[bpOffset + c];
+            mem[bpOffset + a] = mem[heapIndex];
             break;
         case putCode: // 25
             /* Take the value from cell c and store it in the heap at the location with index
             ** computed as the value in cell a plus the value in cell b.
             */
-            int memVal = mem[bpOffset + a] + mem[bpOffset + b];
-            mem[hp + memVal] = mem[bpOffset + c];
+            heapIndex = mem[bpOffset + a] + mem[bpOffset + b];
+            mem[heapIndex] = mem[bpOffset + c];
             break;
         case haltCode: // 26
             // Halt execution.
@@ -377,7 +380,7 @@ public class VPL
             break;
         case outputCode: // 28
             // Display the value stored in call a in the console
-            System.out.println(mem[bpOffset + a]);
+            System.out.print(mem[bpOffset + a]);
             break;
         case newlineCode: // 29
             // Move the console cursor to the beginning of the next line
@@ -400,7 +403,8 @@ public class VPL
             /* Let the value stored in cell b be denoted by m. Decrease hp by m and put the new value
             ** of hp in cell a
             */
-            hp = mem[hp - b];
+            int m = mem[bpOffset + b];
+            hp -= m;
             mem[bpOffset + a] = hp;
             break;
         case allocGlobalCode: // 32
@@ -570,7 +574,7 @@ public class VPL
       } else if(k-bp == 0) {
         System.out.println("-------STACK FRAME BEGINS-------");    
         System.out.format("ip: %d - stack cell: X - value: %d%n", k, mem[k]);    
-      } else if (k == sp+1) {
+      } else if (k == sp) {
         System.out.println("-------STACK FRAME ENDS-------");    
         System.out.format("ip: %d - stack cell: %d - value: %d%n", k, (k-bp-2), mem[k]);
       } else if(k-bp-2 >= 0){

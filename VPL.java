@@ -384,7 +384,7 @@ public class VPL
             break;
         case newlineCode: // 29
             // Move the console cursor to the beginning of the next line
-            System.out.println("\n");
+            System.out.print("\n");
             break;
         case symbolCode: // 30
             /* If the value stored in cell a is between 32 and 126, display the corresponding symbol

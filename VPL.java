@@ -145,7 +145,7 @@ public class VPL
             System.out.println("--------------------------");
             System.out.println("Step of execution with IP = " + ip + " opcode: " +
               mem[ip] + 
-             " bp = " + bp + " sp = " + sp + " hp = " + hp + " rv = " + rv );
+             " bp = " + bp + " sp = " + sp + " hp = " + hp + " rv = " + rv + " gp = " + gp );
             System.out.println(" chunk of code: " +  mem[ip] + " " +
                                 mem[ip+1] + " " + mem[ip+2] + " " + mem[ip+3] );
             System.out.println("--------------------------");
@@ -425,11 +425,11 @@ public class VPL
             break;
         case toGlobalCode: // 33
             // Copy the contents of cell a to the global memory area at index gp+n.
-            mem[gp + b] = mem[bpOffset + a];
+            mem[gp + a] = mem[bpOffset + b];
             break;
         case fromGlobalCode: // 34
             // Copy the contents of the global memory cell at index gp+n into cell a.
-            mem[bpOffset + a] = mem[gp +b];
+            mem[bpOffset + a] = mem[gp + b];
             break;
         default: 
             System.out.format("Fatal error at ip: %d, unknown opcode [%d]", ip, op);

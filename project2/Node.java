@@ -219,6 +219,7 @@ System.out.println("has " + number + " children");
           return 0;
        }
        
+       return 0;
    }// evaluate
 
 }// Node

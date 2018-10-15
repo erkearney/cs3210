@@ -1,4 +1,5 @@
 ----------------------------------------Currently working on Project 2, Corgi--------------------------------------
+Don't try running the tests yet, they were written for the wrong version of Corgi.
 
 ------------------------------------------------Project 1 COMPLETE ------------------------------------------------
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.

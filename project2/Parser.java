@@ -197,6 +197,7 @@ public class Parser {
         ! token.getDetails().equals( details ) ) {
       System.out.println("Error:  expected " + token + 
                           " to be kind=" + kind + 
+			  " it is actually " + token.getKind() + 
                           " and details=" + details );
       System.exit(1);
     }

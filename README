@@ -1,8 +1,6 @@
--------------------------------------------WHAT STILL NEEDS TO BE DONE:-------------------------------------------
-Wait for Jerry's judgement. . . 
--------------------------------------------------------------------------------------------------------------------
+----------------------------------------Currently working on Project 2, Corgi--------------------------------------
 
-
+------------------------------------------------Project 1 COMPLETE ------------------------------------------------
 ip - Instruction Pointer: Points to the next instruction for VPL to execute, default = 0.
 -------------------------------------------------------------------------------------------------------------------
 bp - Base Pointer: Points to the beginning of the program's memory, default = number of instructions (k).

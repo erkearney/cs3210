@@ -1,0 +1,19 @@
+<program> -> <statements>
+
+<statements> -> <statement> | 
+                <statement> <statements>
+
+<statement> ->  print <string> |
+                print <expr> |
+                newline |
+                <var> = <expr> 
+
+<expr> -> <term> | <term> <addop> <expr>
+<term> -> <factor> | <factor> <multop> <term>
+
+<factor> -> <number> | <var> |
+            ( <expr> ) |
+            <bif0> () |
+            <bif1> ( <expr> ) |
+            <bif2> ( <expr>, <expr> ) |
+            - <factor>

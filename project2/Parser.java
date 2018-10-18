@@ -18,6 +18,30 @@ public class Parser {
 
    public Node parseProgram() {
       return parseStatements();
+
+      /* Commented for for now because I'm afraid
+      Node first = parseFuncCall();
+
+      // look ahead to see if there are funcDefs
+      Token token = lex.getNextToke();
+
+      if ( token.isKind("eof") ) {
+         return new Node("funcCall", first, null, null );    
+      }
+      else {
+         lex.putBackToken( token );
+         Node second = parseFuncDefs();
+         return new Node( "funcDefs", first, second, null );
+      }
+      */
+   }
+
+   private Node parseFuncCall() {
+        Node first = parseVar();
+        Token token = lex.getNextToken();
+        errorCheck( Token, "Single", "(");
+        // Look to see if there are any arguments
+        token = lex.getNextToken();
    }
 
    private Node parseStatements() {

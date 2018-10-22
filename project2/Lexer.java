@@ -221,6 +221,10 @@ public class Lexer {
                 else if ( data.equals("newline") ) {
                     return new Token( "newline", "" );
                 }
+                else if ( data.equals("def") ) {
+                    // This might be data instead of ""
+                    return new Token("def", "" );    
+                }
                 else {// is just a variable
                     return new Token( "var", data );
                 }

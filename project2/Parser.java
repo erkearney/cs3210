@@ -36,12 +36,87 @@ public class Parser {
       */
    }
 
+   private Node parseFuncDef() {
+      // TODO, actually make this work
+      System.out.println("-----> parsing <funcDef>:");
+      Node first = parseVar();
+      Token token = lex.getNextToken();
+      errorCheck( Token, "def", "");
+      token = lex.getNextToken();
+      if ( token.isKind("var") {
+         token = lex.getNextToken();
+         errorCheck( token, "Single", "(" );
+         // Look ahead to see if there are any <params>
+         token = lex.getNextToken();
+         if( token.isKind("param") ) {
+            // There are params    
+            Node second = parseParams();
+            errorCheck( token, "Single", ")" );
+            // Look ahead again
+            token = lex.getNextToken();
+            if ( token.isKind("stmts") ) {
+                lex.putBackToken( token );
+                Node third = parseStatements();
+                token = lex.getNextToken();
+                errorCheck( token, "Single", "end" );
+                lex.putBackToken( token );
+                return new Node( "funcDef", first, second, third );
+            }
+            else {
+                token = lex.getNextToken();
+                errorCheck( token, "Single", "end" );
+                lex.putBackToken( token );
+                return new Node( "funcDef", first, second, null );
+            }
+         }
+         else {
+            // There are no parameters
+            errorCheck( token, "Single", ")" );
+            // Look ahead again
+            token = lex.getNextToken();
+            if ( token.isKind("stmts") ) {
+                lex.putBackToken( token );
+                Node second = parseStatements();
+                token = lex.getNextToken();
+                errorCheck( token, "Single", "end" );
+                lex.putBackToken( token );
+                return new Node( "funcDef", first, second, null );
+            }
+            else {
+                token = lex.getNextToken();
+                errorCheck( token, "Single", "end" );
+                lex.putBackToken( token );
+                return new Node( "funcDef", first, null, null );
+            }
+         }
+      }
+      else {
+         // If we get here, wrong token
+         // TODO improve this error message by stating which function name was bad
+         System.out.format("Syntax error: Bad function name.\n");
+         System.exit(1);
+      }
+   }
+
    private Node parseFuncCall() {
+        System.out.println("-----> parsing <funcCall>:");
         Node first = parseVar();
         Token token = lex.getNextToken();
         errorCheck( Token, "Single", "(");
         // Look to see if there are any arguments
         token = lex.getNextToken();
+        if ( token.isKind("expr") ) {
+            // There are arguments
+            lex.putBackToken( token );
+            Node second = parseArgs();
+            return new Node( "funcCall", first, second, null );
+        }
+        else {
+            // There are no arguments
+            lex.packBackToken( token );
+            errorCheck( Token, "Single", ")");
+            return new Node( "funcCall", first, null, null );
+        }
    }
 
    private Node parseStatements() {

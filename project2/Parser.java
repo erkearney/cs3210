@@ -17,28 +17,39 @@ public class Parser {
    }
 
    public Node parseProgram() {
-      return parseStatements();
-
-      /* Commented for for now because I'm afraid
       Node first = parseFuncCall();
 
       // look ahead to see if there are funcDefs
-      Token token = lex.getNextToke();
+      Token token = lex.getNextToken();
 
       if ( token.isKind("eof") ) {
+         // <program> -> <funcCall>
+         lex.putBackToken( token );
          return new Node("funcCall", first, null, null );    
       }
       else {
+         // <program> -> <funcCall> <funcDefs>
          lex.putBackToken( token );
          Node second = parseFuncDefs();
          return new Node( "funcDefs", first, second, null );
       }
-      */
    }
 
    private Node parseFuncDefs() {
       // TODO implement <funcDefs>
-      return new Node( "funcDefs", null, null, null );
+      System.out.println("-----> parsing <funcDefs>");
+      Node first = parseFuncDef();
+      // Check if there is another funcDef
+      Token token = lex.getNextToken();
+      if( token.isKind( "funcDef" ) ) {
+         // <funcDefs> -> <funcDef> <funcDefs>
+         Node second = parseFuncDef();
+         return new Node( "funcDefs", first, second, null );
+      }
+      else {
+         // <funcDefs> -> <funcDef>
+         return new Node( "funcDefs", first, null, null );
+      }
    } // <funcDefs>
 
    private Node parseFuncDef() {
@@ -105,8 +116,22 @@ public class Parser {
    } // funcDef
 
    private Node parseParams() {
-      // TODO implement <params>
-      return new Node( "params", null, null, null );    
+      Token token = lex.getNextToken();
+      errorCheck( token, "var", "data" );
+      Node first = parseVar();
+      // Look ahead for more vars
+      token = lex.getNextToken();
+      if( token.isKind( "var" ) ) {
+         // <params> -> <var>, <params>    
+         lex.putBackToken( token );
+         Node second = parseParams();
+         return new Node("params", first, second, null);
+      }
+      else {
+         // <params> -> <var>
+         lex.putBackToken( token );
+         return new Node("params", first, null, null);
+      }
    } // <params>
 
    private Node parseStatements() {

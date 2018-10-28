@@ -326,7 +326,14 @@ public class Parser {
       //TODO implement parseVar
       // Also, figure out whether this should actually be here, it isn't in
       // the CFG, but it seems like we have to have this here.
-      return new Node("var", null, null, null);
+      System.out.println("-----> parsing <var>:");
+      Token token = lex.getNextToken();
+      if( !token.isKind("var") ) {
+         System.out.println("Error: expected var, got " + token.getDetails());
+         System.exit(1);
+      }
+      String varName = token.getDetails();
+      return new Node (varName, null, null, null, null);
    } // <var>
 
   // check whether token is correct kind

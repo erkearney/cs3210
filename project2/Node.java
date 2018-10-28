@@ -165,7 +165,7 @@ public class Node {
         }
 
         else if ( kind.equals("lt") ) {
-            double value = first.evalutate();
+            double value = first.evaluate();
             table.store( info, value );
         }
 

@@ -164,6 +164,27 @@ public class Node {
             table.store( info, value );
         }
 
+        else if ( kind.equals("lt") ) {
+            double value = first.evalutate();
+            table.store( info, value );
+        }
+
+        else if ( kind.equals("le") ) {
+            double value = first.evaluate();
+            table.store( info, value );
+        }
+
+        else if ( kind.equals("eq") ) {
+            double value = first.evaluate();
+            table.store( info, value );
+        }
+
+        else if (kind.equals("ne") ) {
+            double value = first.evaluate();
+            table.store( info, value );
+        }
+
+
         else {
             error("Unknown kind of node [" + kind + "]");
         }
@@ -232,6 +253,42 @@ public class Node {
         else if ( kind.equals("opp") ) {
             double value = first.evaluate();
             return -value;
+        }
+
+        else if ( kind.equals("lt") ) {
+            double value1 = first.evaluate();
+            double value2 = second.evaluate();
+            if (value1 < value2) {
+                return 1;
+            }
+            return 0;
+        }
+
+        else if ( kind.equals("le") ) {
+            double value1 = first.evaluate();
+            double value2 = second.evaluate();
+            if (value1 <= value2) {
+                return 1;
+            }
+            return 0;
+        }
+
+        else if ( kind.equals("eq") ) {
+            double value1 = first.evaluate();
+            double value2 = second.evaluate();
+            if (value1 == value2) {
+                return 1;
+            }
+            return 0;
+        }
+
+        else if ( kind.equals("ne") ) {
+            double value1 = first.evaluate();
+            double value2 = second.evaluate();
+            if (value1 != value2) {
+                return 1;
+            }
+            return 0;
         }
 
         else {

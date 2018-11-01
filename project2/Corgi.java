@@ -11,7 +11,7 @@ public class Corgi {
     Lexer lex = new Lexer( name );
     Parser parser = new Parser( lex );
 
-    // start with <statements>
+    // start with <program>
     Node root = parser.parseProgram();
 
     // display parse tree for debugging/testing:

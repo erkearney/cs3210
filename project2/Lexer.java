@@ -240,7 +240,7 @@ public class Lexer {
                 return new Token( "string", data );
             }
             else if ( state == 8 ) {
-                return new Token( "single", data );
+                return new Token( "Single", data );
             }
             else if ( state == 9 ) {
                 return new Token( "eof", data );

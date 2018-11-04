@@ -17,6 +17,7 @@ public class Parser {
    }
 
    public Node parseProgram() {
+      System.out.println("-----> parsing <program>");
       Node first = parseFuncCall();
 
       // look ahead to see if there are funcDefs
@@ -36,7 +37,6 @@ public class Parser {
    }
 
    private Node parseFuncDefs() {
-      // TODO implement <funcDefs>
       System.out.println("-----> parsing <funcDefs>");
       Node first = parseFuncDef();
       // Check if there is another funcDef
@@ -59,13 +59,11 @@ public class Parser {
       // second child will be null, if there are no <statements>, the third
       // child will be null.k=
       System.out.println("-----> parsing <funcDef>:");
-      Node first = parseVar();
       Token token = lex.getNextToken();
       errorCheck( token, "def", "");
+      Node first = parseVar();
       token = lex.getNextToken();
-      errorCheck( token, "var", "data");
-      token = lex.getNextToken();
-      errorCheck( token, "Single", "(" );
+      errorCheck( token, "Single", "(");
       // Look ahead to see if there are any parameters
       token = lex.getNextToken();
       if( token.isKind("param") ) {
@@ -116,6 +114,7 @@ public class Parser {
    } // funcDef
 
    private Node parseParams() {
+      System.out.println("-----> parsing <params>");
       Token token = lex.getNextToken();
       errorCheck( token, "var", "data" );
       Node first = parseVar();
@@ -163,18 +162,20 @@ public class Parser {
             // <funcCall> -> <var> ( <args> )
             lex.putBackToken( token );
             Node second = parseArgs();
+            System.out.println("Finished parsing <funcCall> -> <var> ( <args> )");
             return new Node( "funcCall", first, second, null );
         }
         else {
             // <funcCall> -> <var> ( )
-            token = lex.getNextToken();
             errorCheck( token, "Single", ")");
+            System.out.println("Finished parsing <funcCall> -> <var> ( )");
             return new Node( "funcCall", first, null, null );
         }
    } // funcCall
 
    private Node parseArgs() {
       // TODO implement <args>
+      System.out.println("-----> parsing <args> NIY");
       return new Node( "args", null, null, null );
    }
 
@@ -328,11 +329,12 @@ public class Parser {
       // the CFG, but it seems like we have to have this here.
       System.out.println("-----> parsing <var>:");
       Token token = lex.getNextToken();
-      if( !token.isKind("var") ) {
+      if( ! token.isKind( "var" ) ) {
          System.out.println("Error: expected var, got " + token.getDetails());
          System.exit(1);
       }
       String varName = token.getDetails();
+      System.out.println("Finished parsing <var>");
       return new Node (varName, null, null, null, null);
    } // <var>
 
@@ -351,7 +353,8 @@ public class Parser {
         ! token.getDetails().equals( details ) ) {
       System.out.println("Error:  expected " + token + 
                           " to be kind=" + kind + 
-			  " it is actually " + token.getKind() + 
+                          " and to be details=" + details +
+			              " it is actually kind=" + token.getKind() + 
                           " and details=" + details );
       System.exit(1);
     }

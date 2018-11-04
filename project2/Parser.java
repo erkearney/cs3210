@@ -231,7 +231,7 @@ public class Parser {
            token.matches("single", "-") 
          ) {
          Node second = parseExpr();
-         return new Node( token.getDetails(), first, second, null );
+         return new Node( "expr", token.getDetails(), first, second, null );
       }
       else {// is just one term
          lex.putBackToken( token );
@@ -252,7 +252,7 @@ public class Parser {
            token.matches("single", "/") 
          ) {
          Node second = parseTerm();
-         return new Node( token.getDetails(), first, second, null );
+         return new Node( "term", token.getDetails(), first, second, null );
       }
       else {// is just one factor
          lex.putBackToken( token );

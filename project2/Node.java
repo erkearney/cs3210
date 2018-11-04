@@ -155,6 +155,7 @@ public class Node {
             System.out.print( value );
         }
 
+
         else if ( kind.equals("nl") ) {
             System.out.print( "\n" );
         }
@@ -182,6 +183,68 @@ public class Node {
         else if (kind.equals("ne") ) {
             double value = first.evaluate();
             table.store( info, value );
+        }
+
+        else if (kind.equals("funcDefs")) {
+            if ( first != null ) {
+                first.execute();
+                if ( second != null ) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("funcCall")) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("param")) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("funcDef")) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                    if (third != null) {
+                        third.execute();
+                    }
+                }
+            }
+        }
+        //TODO: Check if this is right
+        else if (kind.equals("sto")) {
+            table.store(info, first.execute());
+        }
+
+        else if (kind.equals("args")) {
+            // NOTICE: This is not finished in parser
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("+") || kind.equals("-") || kind.equals("*")) || kind.equals("/") {
+            if (first != null) {
+                Double val1 = first.evaluate();
+                if (second != null) {
+                    first.execute();
+                }
+            }
         }
 
 

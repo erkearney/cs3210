@@ -270,6 +270,7 @@ public class Parser {
       if ( token.isKind("num") ) {
          return new Node("num", token.getDetails(), null, null, null );
       }
+      //TODO: check to see if this is necessary
       else if ( token.isKind("var") ) {
          return new Node("var", token.getDetails(), null, null, null );
       }

@@ -225,7 +225,8 @@ public class Node {
         }
         //TODO: Check if this is right
         else if (kind.equals("sto")) {
-            //table.store(inf, first.execute());
+            double value = first.evaluate();
+            table.store(info, value)
         }
 
         else if (kind.equals("args")) {
@@ -253,10 +254,6 @@ public class Node {
             table.store(info, value);
         }
 
-        else if ( kind.equals("var")) {
-            double value = this.evaluate();
-            table.store(info, value);
-        }
 
 
         else {

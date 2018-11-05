@@ -225,7 +225,7 @@ public class Node {
         }
         //TODO: Check if this is right
         else if (kind.equals("sto")) {
-            table.store(info, first.execute());
+            //table.store(inf, first.execute());
         }
 
         else if (kind.equals("args")) {

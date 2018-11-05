@@ -238,13 +238,24 @@ public class Node {
             }
         }
 
-        else if (kind.equals("+") || kind.equals("-") || kind.equals("*") || kind.equals("/")) {
-            if (first != null) {
-                Double val1 = first.evaluate();
-                if (second != null) {
-                    first.execute();
-                }
-            }
+        else if ( kind.equals("expr") ) {
+            double value = this.evaluate();
+            table.store(info, value);
+        }
+
+        else if ( kind.equals("term") ) {
+            double value = this.evaluate();
+            table.store(info, value);
+        }
+
+        else if ( kind.equals("num")) {
+            double value = this.evaluate();
+            table.store(info, value);
+        }
+
+        else if ( kind.equals("var")) {
+            double value = this.evaluate();
+            table.store(info, value);
         }
 
 

@@ -238,7 +238,7 @@ public class Node {
             }
         }
 
-        else if (kind.equals("+") || kind.equals("-") || kind.equals("*")) || kind.equals("/")) {
+        else if (kind.equals("+") || kind.equals("-") || kind.equals("*") || kind.equals("/")) {
             if (first != null) {
                 Double val1 = first.evaluate();
                 if (second != null) {

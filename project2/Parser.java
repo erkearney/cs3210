@@ -140,7 +140,11 @@ public class Parser {
  
       // look ahead to see if there are more statement's
       Token token = lex.getNextToken();
+      if ( token.isKind("stmts") ) {
+          
+      }
  
+      /*
       if ( token.isKind("eof") ) {
          return new Node( "stmts", first, null, null );
       }
@@ -149,6 +153,7 @@ public class Parser {
          Node second = parseStatements();
          return new Node( "stmts", first, second, null );
       }
+      */
    } // <statements>
 
    private Node parseFuncCall() {

@@ -256,7 +256,7 @@ public class Node {
 
         else if ( kind.equals("cond")) {
             double value = first.evaluate();
-            if(value > 0 || < 0) {
+            if(value > 0 || value < 0) {
                 second.execute();
             }
             else {

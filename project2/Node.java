@@ -254,6 +254,16 @@ public class Node {
             table.store(info, value);
         }
 
+        else if ( kind.equals("cond")) {
+            double value = first.evaluate();
+            if(value > 0 || < 0) {
+                second.execute();
+            }
+            else {
+                third.execute();
+            }
+        }
+
 
 
         else {

@@ -205,17 +205,16 @@ public class Lexer {
             //TODO: Might need to add bif's for expressions and terms
             if ( state == 2 ) {
                 // see if data matches any special words
-                if ( data.equals("input") ) {
+                if ( data.equals("input") || (data.equals("nl") ) ) {
                     return new Token( "bif0", data );
                 }
                 else if ( data.equals("sqrt") || data.equals("cos") ||
                         data.equals("sin") || data.equals("atan") || data.equals("print") || data.equals("round")
-                        || data.equals("trunc")
-                        ) {
+                        || data.equals("trunc") || data.equals("not") ) {
                     return new Token( "bif1", data );
                 }
                 else if ( data.equals("pow") || data.equals("lt") || data.equals("le") ||
-                        data.equals("eq") || data.equals("ne") || data.equals("or") || data.equals("and") || data.equals("not") ) {
+                        data.equals("eq") || data.equals("ne") || data.equals("or") || data.equals("and") ) {
                     return new Token( "bif2", data );
                 }
                 else if ( data.equals("newline") ) {
@@ -224,6 +223,9 @@ public class Lexer {
                 else if ( data.equals("def") ) {
                     // This might be data instead of ""
                     return new Token("def", "" );    
+                }
+                else if ( data.equals("return") ) {
+                    return new Token("return", "");    
                 }
                 else if (data.equals("if") ) {
                     return new Token("if", "");    

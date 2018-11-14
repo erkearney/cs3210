@@ -1,0 +1,1850 @@
+-----> parsing <program>
+-----> parsing <funcCall>:
+                     got token: [var,main]
+Token is var
+put back token [var,main]
+-----> parsing <var>:
+                     got token: [var,main]
+Finished parsing <var>
+#0[main,null]< >
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <var> ( )
+#1[funcCall,]<0 >
+                     got token: [def,]
+put back token [def,]
+-----> parsing <funcDefs>
+-----> parsing <funcDef>:
+                     got token: [def,]
+-----> parsing <var>:
+                     got token: [var,main]
+Finished parsing <var>
+#2[main,null]< >
+                     got token: [Single,(]
+                     got token: [Single,)]
+There are no parameters
+                     got token: [string,2 < 3? ]
+string
+put back token [string,2 < 3? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,2 < 3? ]
+Finished parsing <statement> -> <string>
+#3[prtstr,2 < 3? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,lt]
+put back token [bif2,lt]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,lt]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#4[num,2]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#5[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#6[lt,]<4 5>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#7[bif1,)]<6 >
+#8[funcCall,]<7 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#9[bif0,)]< >
+#10[funcCall,]<9 >
+                     got token: [string,3 < 2? ]
+put back token [string,3 < 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 < 2? ]
+Finished parsing <statement> -> <string>
+#11[prtstr,3 < 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,lt]
+put back token [bif2,lt]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,lt]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#12[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#13[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#14[lt,]<12 13>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#15[bif1,)]<14 >
+#16[funcCall,]<15 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#17[bif0,)]< >
+#18[funcCall,]<17 >
+                     got token: [string,3 < 3? ]
+put back token [string,3 < 3? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 < 3? ]
+Finished parsing <statement> -> <string>
+#19[prtstr,3 < 3? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,lt]
+put back token [bif2,lt]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,lt]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#20[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#21[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#22[lt,]<20 21>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#23[bif1,)]<22 >
+#24[funcCall,]<23 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#25[bif0,)]< >
+#26[funcCall,]<25 >
+                     got token: [string,2 <= 3? ]
+put back token [string,2 <= 3? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,2 <= 3? ]
+Finished parsing <statement> -> <string>
+#27[prtstr,2 <= 3? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,le]
+put back token [bif2,le]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,le]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#28[num,2]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#29[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#30[le,]<28 29>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#31[bif1,)]<30 >
+#32[funcCall,]<31 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#33[bif0,)]< >
+#34[funcCall,]<33 >
+                     got token: [string,3 <= 2? ]
+put back token [string,3 <= 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 <= 2? ]
+Finished parsing <statement> -> <string>
+#35[prtstr,3 <= 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,le]
+put back token [bif2,le]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,le]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#36[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#37[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#38[le,]<36 37>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#39[bif1,)]<38 >
+#40[funcCall,]<39 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#41[bif0,)]< >
+#42[funcCall,]<41 >
+                     got token: [string,3 <= 3? ]
+put back token [string,3 <= 3? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 <= 3? ]
+Finished parsing <statement> -> <string>
+#43[prtstr,3 <= 3? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,le]
+put back token [bif2,le]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,le]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#44[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#45[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#46[le,]<44 45>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#47[bif1,)]<46 >
+#48[funcCall,]<47 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#49[bif0,)]< >
+#50[funcCall,]<49 >
+                     got token: [string,2 == 2? ]
+put back token [string,2 == 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,2 == 2? ]
+Finished parsing <statement> -> <string>
+#51[prtstr,2 == 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,eq]
+put back token [bif2,eq]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,eq]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#52[num,2]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#53[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#54[eq,]<52 53>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#55[bif1,)]<54 >
+#56[funcCall,]<55 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#57[bif0,)]< >
+#58[funcCall,]<57 >
+                     got token: [string,3 == 2? ]
+put back token [string,3 == 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 == 2? ]
+Finished parsing <statement> -> <string>
+#59[prtstr,3 == 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,eq]
+put back token [bif2,eq]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,eq]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#60[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#61[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#62[eq,]<60 61>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#63[bif1,)]<62 >
+#64[funcCall,]<63 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#65[bif0,)]< >
+#66[funcCall,]<65 >
+                     got token: [string,2 != 2? ]
+put back token [string,2 != 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,2 != 2? ]
+Finished parsing <statement> -> <string>
+#67[prtstr,2 != 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,ne]
+put back token [bif2,ne]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,ne]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#68[num,2]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#69[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#70[ne,]<68 69>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#71[bif1,)]<70 >
+#72[funcCall,]<71 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#73[bif0,)]< >
+#74[funcCall,]<73 >
+                     got token: [string,3 != 2? ]
+put back token [string,3 != 2? ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 != 2? ]
+Finished parsing <statement> -> <string>
+#75[prtstr,3 != 2? ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,ne]
+put back token [bif2,ne]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,ne]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#76[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#77[num,2]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#78[ne,]<76 77>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#79[bif1,)]<78 >
+#80[funcCall,]<79 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#81[bif0,)]< >
+#82[funcCall,]<81 >
+                     got token: [string,0 and 3 ]
+put back token [string,0 and 3 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,0 and 3 ]
+Finished parsing <statement> -> <string>
+#83[prtstr,0 and 3 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,and]
+put back token [bif2,and]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,and]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#84[num,0]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#85[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#86[and,]<84 85>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#87[bif1,)]<86 >
+#88[funcCall,]<87 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#89[bif0,)]< >
+#90[funcCall,]<89 >
+                     got token: [string,0 and 0 ]
+put back token [string,0 and 0 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,0 and 0 ]
+Finished parsing <statement> -> <string>
+#91[prtstr,0 and 0 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,and]
+put back token [bif2,and]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,and]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#92[num,0]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#93[num,0]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#94[and,]<92 93>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#95[bif1,)]<94 >
+#96[funcCall,]<95 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#97[bif0,)]< >
+#98[funcCall,]<97 >
+                     got token: [string,3 and 3 ]
+put back token [string,3 and 3 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 and 3 ]
+Finished parsing <statement> -> <string>
+#99[prtstr,3 and 3 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,and]
+put back token [bif2,and]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,and]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#100[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#101[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#102[and,]<100 101>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#103[bif1,)]<102 >
+#104[funcCall,]<103 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#105[bif0,)]< >
+#106[funcCall,]<105 >
+                     got token: [string,0 or 3 ]
+put back token [string,0 or 3 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,0 or 3 ]
+Finished parsing <statement> -> <string>
+#107[prtstr,0 or 3 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,or]
+put back token [bif2,or]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,or]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#108[num,0]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#109[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#110[or,]<108 109>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#111[bif1,)]<110 >
+#112[funcCall,]<111 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#113[bif0,)]< >
+#114[funcCall,]<113 >
+                     got token: [string,0 or 0 ]
+put back token [string,0 or 0 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,0 or 0 ]
+Finished parsing <statement> -> <string>
+#115[prtstr,0 or 0 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,or]
+put back token [bif2,or]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,or]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#116[num,0]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#117[num,0]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#118[or,]<116 117>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#119[bif1,)]<118 >
+#120[funcCall,]<119 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#121[bif0,)]< >
+#122[funcCall,]<121 >
+                     got token: [string,3 or 3 ]
+put back token [string,3 or 3 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,3 or 3 ]
+Finished parsing <statement> -> <string>
+#123[prtstr,3 or 3 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,or]
+put back token [bif2,or]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,or]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#124[num,3]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#125[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#126[or,]<124 125>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#127[bif1,)]<126 >
+#128[funcCall,]<127 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#129[bif0,)]< >
+#130[funcCall,]<129 >
+                     got token: [string,! 0 ]
+put back token [string,! 0 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,! 0 ]
+Finished parsing <statement> -> <string>
+#131[prtstr,! 0 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,not]
+put back token [bif1,not]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,not]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,0]
+#132[num,0]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#133[not,]<132 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#134[bif1,)]<133 >
+#135[funcCall,]<134 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#136[bif0,)]< >
+#137[funcCall,]<136 >
+                     got token: [string,! 3 ]
+put back token [string,! 3 ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,! 3 ]
+Finished parsing <statement> -> <string>
+#138[prtstr,! 3 ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,not]
+put back token [bif1,not]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,not]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#139[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#140[not,]<139 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#141[bif1,)]<140 >
+#142[funcCall,]<141 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#143[bif0,)]< >
+#144[funcCall,]<143 >
+                     got token: [string,sqrt(3): ]
+put back token [string,sqrt(3): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,sqrt(3): ]
+Finished parsing <statement> -> <string>
+#145[prtstr,sqrt(3): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,sqrt]
+put back token [bif1,sqrt]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,sqrt]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,3]
+#146[num,3]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#147[sqrt,]<146 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#148[bif1,)]<147 >
+#149[funcCall,]<148 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#150[bif0,)]< >
+#151[funcCall,]<150 >
+                     got token: [string,cos(30): ]
+put back token [string,cos(30): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,cos(30): ]
+Finished parsing <statement> -> <string>
+#152[prtstr,cos(30): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,cos]
+put back token [bif1,cos]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,cos]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,30]
+#153[num,30]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#154[cos,]<153 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#155[bif1,)]<154 >
+#156[funcCall,]<155 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#157[bif0,)]< >
+#158[funcCall,]<157 >
+                     got token: [string,sin(30): ]
+put back token [string,sin(30): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,sin(30): ]
+Finished parsing <statement> -> <string>
+#159[prtstr,sin(30): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,sin]
+put back token [bif1,sin]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,sin]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,30]
+#160[num,30]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#161[sin,]<160 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#162[bif1,)]<161 >
+#163[funcCall,]<162 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#164[bif0,)]< >
+#165[funcCall,]<164 >
+                     got token: [string,atan(1): ]
+put back token [string,atan(1): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,atan(1): ]
+Finished parsing <statement> -> <string>
+#166[prtstr,atan(1): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,atan]
+put back token [bif1,atan]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,atan]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,1]
+#167[num,1]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#168[atan,]<167 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#169[bif1,)]<168 >
+#170[funcCall,]<169 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#171[bif0,)]< >
+#172[funcCall,]<171 >
+                     got token: [string,pow(2,.5): ]
+put back token [string,pow(2,.5): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,pow(2,.5): ]
+Finished parsing <statement> -> <string>
+#173[prtstr,pow(2,.5): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif2,pow]
+put back token [bif2,pow]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif2,pow]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2]
+#174[num,2]< >
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+put back token [Single,,]
+                     got token: [Single,,]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,.5]
+#175[num,.5]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#176[pow,]<174 175>
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#177[bif1,)]<176 >
+#178[funcCall,]<177 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#179[bif0,)]< >
+#180[funcCall,]<179 >
+                     got token: [string,round(2.5): ]
+put back token [string,round(2.5): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,round(2.5): ]
+Finished parsing <statement> -> <string>
+#181[prtstr,round(2.5): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,round]
+put back token [bif1,round]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,round]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2.5]
+#182[num,2.5]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#183[round,]<182 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#184[bif1,)]<183 >
+#185[funcCall,]<184 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#186[bif0,)]< >
+#187[funcCall,]<186 >
+                     got token: [string,round(2.49999): ]
+put back token [string,round(2.49999): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,round(2.49999): ]
+Finished parsing <statement> -> <string>
+#188[prtstr,round(2.49999): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,round]
+put back token [bif1,round]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,round]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2.49999]
+#189[num,2.49999]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#190[round,]<189 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#191[bif1,)]<190 >
+#192[funcCall,]<191 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#193[bif0,)]< >
+#194[funcCall,]<193 >
+                     got token: [string,trunc(2.49999): ]
+put back token [string,trunc(2.49999): ]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [string,trunc(2.49999): ]
+Finished parsing <statement> -> <string>
+#195[prtstr,trunc(2.49999): ]< >
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif1,print]
+put back token [bif1,print]
+-----> parsing <funcCall>:
+                     got token: [bif1,print]
+Token is bif1
+                     got token: [Single,(]
+                     got token: [bif1,trunc]
+put back token [bif1,trunc]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [bif1,trunc]
+                     got token: [Single,(]
+-----> parsing <expr>
+-----> parsing <term>
+-----> parsing <factor>
+                     got token: [num,2.49999]
+#196[num,2.49999]< >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+#197[trunc,]<196 >
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+put back token [Single,)]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif1>
+#198[bif1,)]<197 >
+#199[funcCall,]<198 >
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <statements>:
+-----> parsing <statement>:
+                     got token: [bif0,nl]
+put back token [bif0,nl]
+-----> parsing <funcCall>:
+                     got token: [bif0,nl]
+Token is bif0
+                     got token: [Single,(]
+                     got token: [Single,)]
+Finished parsing <funcCall> -> <bif0>
+#200[bif0,)]< >
+#201[funcCall,]<200 >
+                     got token: [return,]
+put back token [return,]
+Finished parsing <statements> -> <statement>
+#202[stmts,]<201 >
+Finished parsing <statements> -> <statement> <statements>
+#203[stmts,]<199 202>
+Finished parsing <statements> -> <statement> <statements>
+#204[stmts,]<195 203>
+Finished parsing <statements> -> <statement> <statements>
+#205[stmts,]<194 204>
+Finished parsing <statements> -> <statement> <statements>
+#206[stmts,]<192 205>
+Finished parsing <statements> -> <statement> <statements>
+#207[stmts,]<188 206>
+Finished parsing <statements> -> <statement> <statements>
+#208[stmts,]<187 207>
+Finished parsing <statements> -> <statement> <statements>
+#209[stmts,]<185 208>
+Finished parsing <statements> -> <statement> <statements>
+#210[stmts,]<181 209>
+Finished parsing <statements> -> <statement> <statements>
+#211[stmts,]<180 210>
+Finished parsing <statements> -> <statement> <statements>
+#212[stmts,]<178 211>
+Finished parsing <statements> -> <statement> <statements>
+#213[stmts,]<173 212>
+Finished parsing <statements> -> <statement> <statements>
+#214[stmts,]<172 213>
+Finished parsing <statements> -> <statement> <statements>
+#215[stmts,]<170 214>
+Finished parsing <statements> -> <statement> <statements>
+#216[stmts,]<166 215>
+Finished parsing <statements> -> <statement> <statements>
+#217[stmts,]<165 216>
+Finished parsing <statements> -> <statement> <statements>
+#218[stmts,]<163 217>
+Finished parsing <statements> -> <statement> <statements>
+#219[stmts,]<159 218>
+Finished parsing <statements> -> <statement> <statements>
+#220[stmts,]<158 219>
+Finished parsing <statements> -> <statement> <statements>
+#221[stmts,]<156 220>
+Finished parsing <statements> -> <statement> <statements>
+#222[stmts,]<152 221>
+Finished parsing <statements> -> <statement> <statements>
+#223[stmts,]<151 222>
+Finished parsing <statements> -> <statement> <statements>
+#224[stmts,]<149 223>
+Finished parsing <statements> -> <statement> <statements>
+#225[stmts,]<145 224>
+Finished parsing <statements> -> <statement> <statements>
+#226[stmts,]<144 225>
+Finished parsing <statements> -> <statement> <statements>
+#227[stmts,]<142 226>
+Finished parsing <statements> -> <statement> <statements>
+#228[stmts,]<138 227>
+Finished parsing <statements> -> <statement> <statements>
+#229[stmts,]<137 228>
+Finished parsing <statements> -> <statement> <statements>
+#230[stmts,]<135 229>
+Finished parsing <statements> -> <statement> <statements>
+#231[stmts,]<131 230>
+Finished parsing <statements> -> <statement> <statements>
+#232[stmts,]<130 231>
+Finished parsing <statements> -> <statement> <statements>
+#233[stmts,]<128 232>
+Finished parsing <statements> -> <statement> <statements>
+#234[stmts,]<123 233>
+Finished parsing <statements> -> <statement> <statements>
+#235[stmts,]<122 234>
+Finished parsing <statements> -> <statement> <statements>
+#236[stmts,]<120 235>
+Finished parsing <statements> -> <statement> <statements>
+#237[stmts,]<115 236>
+Finished parsing <statements> -> <statement> <statements>
+#238[stmts,]<114 237>
+Finished parsing <statements> -> <statement> <statements>
+#239[stmts,]<112 238>
+Finished parsing <statements> -> <statement> <statements>
+#240[stmts,]<107 239>
+Finished parsing <statements> -> <statement> <statements>
+#241[stmts,]<106 240>
+Finished parsing <statements> -> <statement> <statements>
+#242[stmts,]<104 241>
+Finished parsing <statements> -> <statement> <statements>
+#243[stmts,]<99 242>
+Finished parsing <statements> -> <statement> <statements>
+#244[stmts,]<98 243>
+Finished parsing <statements> -> <statement> <statements>
+#245[stmts,]<96 244>
+Finished parsing <statements> -> <statement> <statements>
+#246[stmts,]<91 245>
+Finished parsing <statements> -> <statement> <statements>
+#247[stmts,]<90 246>
+Finished parsing <statements> -> <statement> <statements>
+#248[stmts,]<88 247>
+Finished parsing <statements> -> <statement> <statements>
+#249[stmts,]<83 248>
+Finished parsing <statements> -> <statement> <statements>
+#250[stmts,]<82 249>
+Finished parsing <statements> -> <statement> <statements>
+#251[stmts,]<80 250>
+Finished parsing <statements> -> <statement> <statements>
+#252[stmts,]<75 251>
+Finished parsing <statements> -> <statement> <statements>
+#253[stmts,]<74 252>
+Finished parsing <statements> -> <statement> <statements>
+#254[stmts,]<72 253>
+Finished parsing <statements> -> <statement> <statements>
+#255[stmts,]<67 254>
+Finished parsing <statements> -> <statement> <statements>
+#256[stmts,]<66 255>
+Finished parsing <statements> -> <statement> <statements>
+#257[stmts,]<64 256>
+Finished parsing <statements> -> <statement> <statements>
+#258[stmts,]<59 257>
+Finished parsing <statements> -> <statement> <statements>
+#259[stmts,]<58 258>
+Finished parsing <statements> -> <statement> <statements>
+#260[stmts,]<56 259>
+Finished parsing <statements> -> <statement> <statements>
+#261[stmts,]<51 260>
+Finished parsing <statements> -> <statement> <statements>
+#262[stmts,]<50 261>
+Finished parsing <statements> -> <statement> <statements>
+#263[stmts,]<48 262>
+Finished parsing <statements> -> <statement> <statements>
+#264[stmts,]<43 263>
+Finished parsing <statements> -> <statement> <statements>
+#265[stmts,]<42 264>
+Finished parsing <statements> -> <statement> <statements>
+#266[stmts,]<40 265>
+Finished parsing <statements> -> <statement> <statements>
+#267[stmts,]<35 266>
+Finished parsing <statements> -> <statement> <statements>
+#268[stmts,]<34 267>
+Finished parsing <statements> -> <statement> <statements>
+#269[stmts,]<32 268>
+Finished parsing <statements> -> <statement> <statements>
+#270[stmts,]<27 269>
+Finished parsing <statements> -> <statement> <statements>
+#271[stmts,]<26 270>
+Finished parsing <statements> -> <statement> <statements>
+#272[stmts,]<24 271>
+Finished parsing <statements> -> <statement> <statements>
+#273[stmts,]<19 272>
+Finished parsing <statements> -> <statement> <statements>
+#274[stmts,]<18 273>
+Finished parsing <statements> -> <statement> <statements>
+#275[stmts,]<16 274>
+Finished parsing <statements> -> <statement> <statements>
+#276[stmts,]<11 275>
+Finished parsing <statements> -> <statement> <statements>
+#277[stmts,]<10 276>
+Finished parsing <statements> -> <statement> <statements>
+#278[stmts,]<8 277>
+Finished parsing <statements> -> <statement> <statements>
+#279[stmts,]<3 278>
+                     got token: [return,]
+put back token [return,]
+Finished parsing <funcDef> -> def <var> ( ) <statements> end
+#280[funcDef,]<2 279>
+                     got token: [return,]
+Finished parsing <funcDefs> -> <funcDef>
+#281[funcDefs,]<280 >
+Finished parsing <program> -> <funcCall> <funcDefs>
+#282[funcDefs,]<1 281>
+draw node 282
+has 2 children
+draw node 1
+has 1 children
+draw node 0

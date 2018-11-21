@@ -31,7 +31,7 @@ public class Node {
         first = one;  second = two;  third = three;
         id = count;
         count++;
-        System.out.println( this );
+        //System.out.println( this );
     }
 
     // construct a node with specified info
@@ -40,7 +40,7 @@ public class Node {
         first = one;  second = two;  third = three;
         id = count;
         count++;
-        System.out.println( this );
+        //System.out.println( this );
     }
 
     // construct a node that is essentially a token
@@ -49,7 +49,7 @@ public class Node {
         first = null;  second = null;  third = null;
         id = count;
         count++;
-        System.out.println( this );
+        //System.out.println( this );
     }
 
     public String toString() {
@@ -89,7 +89,7 @@ public class Node {
     // to children
     public void draw( Camera cam, double x, double y, double h, double v ) {
 
-        System.out.println("draw node " + id );
+        //System.out.println("draw node " + id + " which is of type " + kind );
 
         // set drawing color
         cam.setColor( Color.black );
@@ -102,7 +102,7 @@ public class Node {
         // in a nice, uniform manner
         Node[] children = getChildren();
         int number = children.length;
-        System.out.println("has " + number + " children");
+        //System.out.println("has " + number + " children");
 
         double top = y - 0.75*v;
 

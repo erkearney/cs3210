@@ -234,7 +234,6 @@ public class Lexer {
                     return new Token("else", "");    
                 }
                 else if ( data.equals("end") ) {
-                    // This also might be data instead of ""
                     return new Token("end", "");
                 }
                 else {// is just a variable
@@ -265,13 +264,13 @@ public class Lexer {
 
     public Token getNextToken() {
         Token token = getNext();
-        System.out.println("                     got token: " + token );
+        //System.out.println("                     got token: " + token );
         return token;
     }
 
     public void putBackToken( Token token )
     {
-        System.out.println( margin + "put back token " + token.toString() );
+        //System.out.println( margin + "put back token " + token.toString() );
         stack.push( token );
     }
 

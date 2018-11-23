@@ -1,3 +1,4 @@
+//https://github.com/jamesahhh/Corgi
 import java.util.Scanner;
 
 public class Corgi {

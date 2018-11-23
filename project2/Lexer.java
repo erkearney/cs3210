@@ -210,7 +210,7 @@ public class Lexer {
                 }
                 else if ( data.equals("sqrt") || data.equals("cos") ||
                         data.equals("sin") || data.equals("atan") || data.equals("print") || data.equals("round")
-                        || data.equals("trunc") || data.equals("not") ) {
+                        || data.equals("trunc") || data.equals("not") || data.equals("abs") ) {
                     return new Token( "bif1", data );
                 }
                 else if ( data.equals("pow") || data.equals("lt") || data.equals("le") ||
@@ -264,7 +264,7 @@ public class Lexer {
 
     public Token getNextToken() {
         Token token = getNext();
-        //System.out.println("                     got token: " + token );
+        System.out.println("                     got token: " + token );
         return token;
     }
 

@@ -2,7 +2,7 @@ main()
 
 def fact( n )
 
-   if lt(n 1) 
+   if le(n, 1) 
       return 1
    else
       temp = fact( n-1 )
@@ -15,6 +15,7 @@ def main()
 
   "enter n: "
   n = input()
-  print( fact(n) )
+  print(n)   "! = "   print(fact(n))    nl()
 
+return 0
 end

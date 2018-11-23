@@ -270,7 +270,7 @@ public class Lexer {
 
     public void putBackToken( Token token )
     {
-        //System.out.println( margin + "put back token " + token.toString() );
+        System.out.println( margin + "put back token " + token.toString() );
         stack.push( token );
     }
 

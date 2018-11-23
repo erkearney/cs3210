@@ -160,7 +160,7 @@ public class Parser {
    } // funcDef
 
    private Node parseParams() {
-      //System.out.println("-----> parsing <params>");
+      System.out.println("-----> parsing <params>");
       Token token = lex.getNextToken();
       errorCheck(token, "var");
       String firstVar = token.getDetails();
@@ -257,7 +257,13 @@ public class Parser {
             //System.out.println("Finished parsing <funcCall> -> <bif1>");
             return new Node("bif1", token.getDetails(), first, null, null);
         }
-        else if ( token.isKind("pow") ) {
+        else if ( token.isKind("pow") ||
+                  token.isKind("lt") ||
+                  token.isKind("le") ||
+                  token.isKind("eq") ||
+                  token.isKind("ne") ||
+                  token.isKind("or") ||
+                  token.isKind("and") ) {
             Node first = parseExpr();
             Node second = parseExpr();
             //System.out.println("Finished parsing <funcCall> -> <bif2>");
@@ -269,6 +275,7 @@ public class Parser {
             errorCheck( token, "Single", "(");
             // Look to see if there are any arguments
             token = lex.getNextToken();
+            // TODO here is the problem, change this to all the possibilites of <factor>
             if ( token.isKind("expr") ) {
                 // <funcCall> -> <var> ( <args> )
                 lex.putBackToken( token );
@@ -422,13 +429,14 @@ public class Parser {
       }
       else {// is just one term
          lex.putBackToken( token );
-         return first;
+         System.out.println("Finished parsing <expr> -> <term>");
+         return new Node( "expr", first, null, null );
       }
 
    }// <expr>
 
    private Node parseTerm() {
-      //System.out.println("-----> parsing <term>");
+      System.out.println("-----> parsing <term>");
 
       Node first = parseFactor();
 
@@ -439,10 +447,12 @@ public class Parser {
            token.matches("Single", "/") 
          ) {
          Node second = parseTerm();
+         System.out.println("Finished parsing <term> -> <factor> *// <term>");
          return new Node( "term", token.getDetails(), first, second, null );
       }
       else {// is just one factor
          lex.putBackToken( token );
+         System.out.println("Finished parsing <term> -> <factor>");
          return first;
       }
       
@@ -464,7 +474,7 @@ public class Parser {
          // and the "(" in order for parseFuncCall() to be able to handle it
          Token temp = token;
          token = lex.getNextToken();
-         if ( token.isKind("(") ) {
+         if ( token.matches("Single", "(") ) {
             lex.putBackToken( token );
             lex.putBackToken( temp );
             Node first = parseFuncCall();
@@ -474,6 +484,7 @@ public class Parser {
             return new Node("factor", first, null, null);
          }
          else {
+            lex.putBackToken( token );
             System.out.println("Finished parsing <factor> -> <var>");
             return new Node("factor", token.getDetails(), null, null, null);
          }
@@ -504,16 +515,19 @@ public class Parser {
          return new Node( bifName, first, null, null );
       }
       else if ( token.isKind("bif2") ) {
+         System.out.println("-----> parsing bif2 " + token.getDetails());
          String bifName = token.getDetails();
          token = lex.getNextToken();
          errorCheck( token, "Single", "(" );
          Node first = parseExpr();
          token = lex.getNextToken();
          errorCheck( token, "Single", "," );
+         System.out.println("Now parsing second argument");
          Node second = parseExpr();
          token = lex.getNextToken();
          errorCheck( token, "Single", ")" );
          
+         System.out.println("Finished parsing <factor> -> <funcCall> -> <bif2>");
          return new Node( bifName, first, second, null );
       }
       else if ( token.matches("Single","-") ) {

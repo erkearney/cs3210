@@ -68,9 +68,8 @@ public class Lexer {
                         state = 6;
                     }
                     else if ( sym == '+' || sym == '-' || sym == '*' ||
-                            sym == '(' || sym == ')' ||
-                            sym == ',' || sym == '='
-                            ) {
+                              sym == '(' || sym == ')' || sym == ',' || 
+                              sym == '=' ) {
                         data += (char) sym;
                         state = 8;
                         done = true;
@@ -153,6 +152,14 @@ public class Lexer {
                 }
 
                 else if ( state == 10 ) {
+                    if ( sym == '*' ) {
+                       state = 11;
+                    } else {
+                       state = 8;
+                       data += (char) '/';
+                       done = true;
+                    }
+                    /*
                     if ( sym == 9 || sym == 10 || sym == 13 ||
                             sym == 32 ) {
                         state = 8;
@@ -161,6 +168,7 @@ public class Lexer {
                     else if ( sym == '*') {
                         state = 11;
                     }
+                    */
                 }
 
                 else if ( state == 11 ) {
@@ -171,8 +179,9 @@ public class Lexer {
 
                 else if ( state == 12 ) {
                     if (sym == '/') {
-                        state = 13;
-                        done = true;
+                        // This is a comment, so we just throw it away and act
+                        // like we never even saw it, got back to state 1
+                        state = 1;
                     }
                     else {
                         done = true;

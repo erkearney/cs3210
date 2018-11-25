@@ -10,6 +10,10 @@ public class Corgi {
     Scanner keys = new Scanner( System.in );
     String name = keys.nextLine();
     */
+    if (args.length == 0) {
+       System.out.println("USAGE: Java Corgi <path to program>");
+       System.exit(1);
+    }
     String name = args[0];
 
     Lexer lex = new Lexer( name );

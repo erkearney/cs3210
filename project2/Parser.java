@@ -81,7 +81,7 @@ public class Parser {
             errorCheck( token, "end", "" );
             lex.putBackToken( token );
             //System.out.println("Finished parsing <funcDef> -> def <var> ( <params> ) end");
-            return new Node( "funcDef", first, null, null );
+            return new Node( "funcDef", functionName, first, null, null );
          }
          else {
             lex.putBackToken( token );
@@ -90,7 +90,7 @@ public class Parser {
             errorCheck( token, "end", "" );
             lex.putBackToken( token );
             //System.out.println("Finished parsing <funcDef> -> def <var> ( <params> ) <statements> end");
-            return new Node( "funcDef", first, second, null );
+            return new Node( "funcDef", functionName, first, second, null );
          }
       }
       else {
@@ -105,7 +105,7 @@ public class Parser {
              errorCheck( token, "end", "" );
              lex.putBackToken( token );
              //System.out.println("Finished parsing <funcDef> -> def <var> ( ) end");
-             return new Node( "funcDef", null, null, null );
+             return new Node( "funcDef", functionName, null, null, null );
          }
          else {
              lex.putBackToken( token );
@@ -115,7 +115,7 @@ public class Parser {
              errorCheck( token, "end", "" );
              lex.putBackToken( token );
              //System.out.println("Finished parsing <funcDef> -> def <var> ( ) <statements> end");
-             return new Node( "funcDef", first, null, null );
+             return new Node( "funcDef", functionName, first, null, null );
          }
       }
    } // funcDef

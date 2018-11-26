@@ -436,7 +436,7 @@ public class Parser {
          else {
             lex.putBackToken( token );
             //System.out.println("Finished parsing <factor> -> <var>");
-            return new Node("factor", token.getDetails(), null, null, null);
+            return new Node("var", token.getDetails(), null, null, null);
          }
       }
       else if ( token.matches("Single","(") ) {

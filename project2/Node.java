@@ -264,6 +264,31 @@ public class Node {
             }
         }
 
+        else if ( kind.equals("return") ) {
+            return first.evaluate()
+        }
+
+        else if ( kind.equals("num") ) {
+            table.store(info, info)
+        }
+
+        else if ( kind.equals("factor") ) {
+            if (first != null) {
+                first.execute();
+            }
+            else {
+                return table.retrieve(info)
+            }
+        }
+
+        else if ( kind.equals("program") ) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
 
 
         else {

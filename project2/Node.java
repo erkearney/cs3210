@@ -260,7 +260,7 @@ public class Node {
         }
 
         else if ( kind.equals("return") ) {
-            return first.evaluate();
+            first.evaluate();
         }
 
         else if ( kind.equals("num") ) {
@@ -283,7 +283,7 @@ public class Node {
         }
 
         else if ( kind.equals("var") ) {
-            self.evaluate();
+            this.evaluate();
         }
 
 
@@ -391,6 +391,10 @@ public class Node {
                 return 1;
             }
             return 0;
+        }
+
+        else if ( kind.equals("return") ) {
+            return table.retrieve(info);
         }
 
         else {

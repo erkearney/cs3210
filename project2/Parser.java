@@ -451,7 +451,7 @@ public class Parser {
          errorCheck( token, "Single", "(" );
          token = lex.getNextToken();
          errorCheck( token, "Single", ")" );
-         
+
          return new Node( bifName, null, null, null );
       }
       else if ( token.isKind("bif1") ) {
@@ -461,7 +461,7 @@ public class Parser {
          Node first = parseExpr();
          token = lex.getNextToken();
          errorCheck( token, "Single", ")" );
-         
+
          return new Node( bifName, first, null, null );
       }
       else if ( token.isKind("bif2") ) {
@@ -476,7 +476,7 @@ public class Parser {
          Node second = parseExpr();
          token = lex.getNextToken();
          errorCheck( token, "Single", ")" );
-         
+
          //System.out.println("Finished parsing <factor> -> <funcCall> -> <bif2>");
          return new Node( bifName, first, second, null );
       }

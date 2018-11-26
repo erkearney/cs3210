@@ -137,7 +137,46 @@ public class Node {
     // (for nodes that don't return a value)
     public void execute() {
 
-        if ( kind.equals("stmts") ) {
+        if ( kind.equals("program") ) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("funcCall")) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("funcDefs")) {
+            if ( first != null ) {
+                first.execute();
+                if ( second != null ) {
+                    second.execute();
+                }
+            }
+        }
+
+        else if (kind.equals("funcDef")) {
+            if (first != null) {
+                first.execute();
+                if (second != null) {
+                    second.execute();
+                    if (third != null) {
+                        third.execute();
+                    }
+                }
+            }
+        }
+
+        else if ( kind.equals("stmts") ) {
             if ( first != null ) {
                 first.execute();
                 if ( second != null ) {
@@ -185,41 +224,11 @@ public class Node {
             table.store( info, value );
         }
 
-        else if (kind.equals("funcDefs")) {
-            if ( first != null ) {
-                first.execute();
-                if ( second != null ) {
-                    second.execute();
-                }
-            }
-        }
-
-        else if (kind.equals("funcCall")) {
-            if (first != null) {
-                first.execute();
-                if (second != null) {
-                    second.execute();
-                }
-            }
-        }
-
         else if (kind.equals("param")) {
             if (first != null) {
                 first.execute();
                 if (second != null) {
                     second.execute();
-                }
-            }
-        }
-
-        else if (kind.equals("funcDef")) {
-            if (first != null) {
-                first.execute();
-                if (second != null) {
-                    second.execute();
-                    if (third != null) {
-                        third.execute();
-                    }
                 }
             }
         }
@@ -240,8 +249,9 @@ public class Node {
         }
 
         else if ( kind.equals("term") ) {
-            double value = this.evaluate();
-            table.store(info, value);
+            if (first != null) {
+
+            }
         }
 
         else if ( kind.equals("num")) {
@@ -273,14 +283,6 @@ public class Node {
             }
         }
 
-        else if ( kind.equals("program") ) {
-            if (first != null) {
-                first.execute();
-                if (second != null) {
-                    second.execute();
-                }
-            }
-        }
 
         else if ( kind.equals("var") ) {
             this.evaluate();

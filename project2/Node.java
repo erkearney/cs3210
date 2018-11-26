@@ -264,7 +264,7 @@ public class Node {
         }
 
         else if ( kind.equals("num") ) {
-            table.store(info, info);
+            this.evaluate();
         }
 
         else if ( kind.equals("factor") ) {

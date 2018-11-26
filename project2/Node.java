@@ -155,6 +155,17 @@ public class Node {
             }
         }
 
+        else if ( kind.equals("bif0") ) {
+            double value = this.evaluate();
+            table.store(info, value);
+        }
+
+        else if ( kind.equals("bif1") ) {
+            double value = first.evaluate();
+            table.store(info, value);
+        }
+
+
         else if (kind.equals("funcDefs")) {
             if ( first != null ) {
                 first.execute();
@@ -225,11 +236,11 @@ public class Node {
         }
 
         else if (kind.equals("param")) {
-            if (first != null) {
+            if (first != null ) {
                 first.execute();
-                if (second != null) {
-                    second.execute();
-                }
+            }
+            else {
+                table.store( info, null);
             }
         }
 

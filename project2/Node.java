@@ -223,11 +223,6 @@ public class Node {
                 }
             }
         }
-        //TODO: Check if this is right
-        else if (kind.equals("sto")) {
-            double value = first.evaluate();
-            table.store(info, value);
-        }
 
         else if (kind.equals("args")) {
             // NOTICE: This is not finished in parser
@@ -265,19 +260,16 @@ public class Node {
         }
 
         else if ( kind.equals("return") ) {
-            return first.evaluate()
+            return first.evaluate();
         }
 
         else if ( kind.equals("num") ) {
-            table.store(info, info)
+            table.store(info, info);
         }
 
         else if ( kind.equals("factor") ) {
             if (first != null) {
                 first.execute();
-            }
-            else {
-                return table.retrieve(info)
             }
         }
 
@@ -288,6 +280,10 @@ public class Node {
                     second.execute();
                 }
             }
+        }
+
+        else if ( kind.equals("var") ) {
+            self.evaluate();
         }
 
 
